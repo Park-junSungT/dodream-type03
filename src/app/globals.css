@@ -13,9 +13,19 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/*
+ * The Korean face sits after the Latin ones in every stack. Font fallback is
+ * resolved per glyph, so Latin and numerals keep coming from Inter Tight and
+ * Inter, and only Hangul reaches the Korean face. The system names after it
+ * cover a reader whose network drops the webfont.
+ */
 @theme inline {
-  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-display-latin), var(--font-korean), "Apple SD Gothic Neo",
+    "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:
+    var(--font-sans-latin), var(--font-korean), "Apple SD Gothic Neo",
+    "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
@@ -127,6 +137,87 @@
     letter-spacing: 0.24em;
     text-transform: uppercase;
     color: rgb(var(--stage-ink) / 0.45);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Korean typography                                                */
+  /* --------------------------------------------------------------- */
+
+  /*
+   * Hangul is set in near-square glyph boxes, so a line of Korean carries far
+   * more ink than a line of Latin at the same size. Reusing the English
+   * display values turns an airy editorial headline into a solid block: too
+   * big, too tight, too dark, and it out-shouts the product.
+   *
+   * These rules rebuild the same hierarchy with Korean-appropriate values
+   * rather than reusing the same numbers. They key off `:lang(ko)`, so they
+   * apply to a single element marked `lang="ko"` or to the whole document
+   * once <html lang="ko"> is set — no other change needed.
+   */
+
+  :lang(ko) {
+    /*
+     * The one rule that matters most. Browsers treat Hangul as CJK and will
+     * break between any two syllables, which is what split 않/는 and 하/게
+     * mid-word. `keep-all` restricts breaks to real word boundaries.
+     */
+    word-break: keep-all;
+    /* Safety valve: only breaks a word that cannot fit a line on its own. */
+    overflow-wrap: break-word;
+  }
+
+  .display-xl:lang(ko) {
+    /*
+     * Smaller than the Latin maximum but far denser per line, so the block
+     * lands at a comparable visual weight rather than a comparable size.
+     *
+     * The measure is set in `em`, which caps the headline at roughly eight
+     * and a half Hangul glyphs per line and scales with the type, so it can
+     * never creep toward the product no matter how the copy changes.
+     */
+    font-size: clamp(2.75rem, 6.6vw, 5.2rem);
+    line-height: 1.14;
+    letter-spacing: -0.022em;
+    max-width: 8.5em;
+  }
+
+  .display-lg:lang(ko) {
+    font-size: clamp(1.8rem, 4.4vw, 3.9rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    max-width: 11em;
+  }
+
+  .display-md:lang(ko) {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    line-height: 1.32;
+    letter-spacing: -0.015em;
+  }
+
+  .lede:lang(ko) {
+    /* `ch` measures a Latin zero; Korean needs its own em-based measure. */
+    max-width: 21em;
+    line-height: 1.8;
+    letter-spacing: -0.003em;
+  }
+
+  .eyebrow:lang(ko) {
+    /* 0.24em pulls Hangul apart into loose, unrelated squares. */
+    letter-spacing: 0.14em;
+  }
+
+  .btn:lang(ko) {
+    letter-spacing: 0;
+  }
+
+  .cue {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+  }
+
+  .cue:lang(ko) {
+    letter-spacing: 0.08em;
   }
 
   /* --------------------------------------------------------------- */
