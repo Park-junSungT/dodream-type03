@@ -1,26 +1,414 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ------------------------------------------------------------------ */
+/* DoDream design tokens                                               */
+/* ------------------------------------------------------------------ */
+
+/*
+ * The colour palette is not defined here. Every surface, ink and accent on the
+ * page is a *chapter* colour, interpolated as the story scrolls, so the single
+ * source of truth is `lib/story.ts` — see the `--stage-*` variables below.
+ */
+@theme {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/*
+ * The "stage" is the shared visual environment behind both the DOM and the
+ * WebGL canvas. Its values are interpolated in JS as the story scrolls
+ * (see components/experience/StageDriver.tsx) so that copy, chrome and the
+ * 3D lighting always agree on the current chapter's mood. The values below
+ * are the server-rendered defaults (chapter 01, light).
+ */
+:root {
+  --stage-bg: #f4f3f0;
+  --stage-bg-accent: #e6e3dc;
+  --stage-ink: 16 16 18;
+  --stage-line: 16 16 18;
+  --stage-accent: 163 105 68;
+
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    /* Never let the fixed WebGL layer eat a scroll gesture. */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    height: 100%;
+    scroll-behavior: smooth;
+    /* The sticky navbar must not cover an anchored section heading. */
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    background-color: var(--stage-bg);
+    color: rgb(var(--stage-ink));
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Locks the page while the intro is on screen, and while the modal is open. */
+  body[data-scroll-locked="true"] {
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--stage-accent));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: rgb(var(--stage-accent) / 0.22);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* --------------------------------------------------------------- */
+  /* Typography                                                       */
+  /* --------------------------------------------------------------- */
+
+  .display-xl {
+    font-size: clamp(2.85rem, 9.2vw, 8.5rem);
+    line-height: 0.94;
+    letter-spacing: -0.045em;
+  }
+
+  .display-lg {
+    font-size: clamp(2.4rem, 7.2vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.04em;
+  }
+
+  .display-md {
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.035em;
+  }
+
+  .lede {
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    line-height: 1.6;
+    color: rgb(var(--stage-ink) / 0.66);
+    max-width: 34ch;
+  }
+
+  .eyebrow {
+    font-size: 0.6875rem;
+    line-height: 1;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgb(var(--stage-ink) / 0.45);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Controls                                                         */
+  /* --------------------------------------------------------------- */
+
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 3rem;
+    padding-inline: 1.5rem;
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    pointer-events: auto;
+    transition:
+      background-color 320ms var(--ease-out-expo),
+      color 320ms var(--ease-out-expo),
+      border-color 320ms var(--ease-out-expo),
+      transform 320ms var(--ease-out-expo),
+      opacity 320ms var(--ease-out-expo);
+  }
+
+  .btn:active {
+    transform: scale(0.985);
+  }
+
+  .btn-primary {
+    background: rgb(var(--stage-ink));
+    color: var(--stage-bg);
+  }
+
+  @media (hover: hover) {
+    .btn-primary:hover {
+      background: rgb(var(--stage-accent));
+      color: #fff;
+    }
+  }
+
+  .btn-ghost {
+    border: 1px solid rgb(var(--stage-line) / 0.22);
+    color: rgb(var(--stage-ink) / 0.85);
+    background: transparent;
+  }
+
+  @media (hover: hover) {
+    .btn-ghost:hover {
+      border-color: rgb(var(--stage-line) / 0.45);
+      color: rgb(var(--stage-ink));
+    }
+  }
+
+  .btn-sm {
+    height: 2.375rem;
+    padding-inline: 1.05rem;
+    font-size: 0.8125rem;
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgb(var(--stage-ink) / 0.5);
+    margin-bottom: 0.5rem;
+  }
+
+  .field-input {
+    width: 100%;
+    height: 3rem;
+    padding-inline: 1rem;
+    border-radius: 0.75rem;
+    background: rgb(var(--stage-ink) / 0.035);
+    border: 1px solid rgb(var(--stage-line) / 0.14);
+    color: rgb(var(--stage-ink));
+    font-size: 0.9375rem;
+    transition:
+      border-color 220ms var(--ease-out-expo),
+      background-color 220ms var(--ease-out-expo);
+  }
+
+  .field-input::placeholder {
+    color: rgb(var(--stage-ink) / 0.32);
+  }
+
+  .field-input:focus {
+    border-color: rgb(var(--stage-accent) / 0.6);
+    background: rgb(var(--stage-ink) / 0.05);
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Layout helpers                                                   */
+  /* --------------------------------------------------------------- */
+
+  .shell {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+  }
+
+  /*
+   * Story sections sit above the canvas. They must not swallow pointer
+   * input, otherwise dragging the cane would only work in the gaps between
+   * text. Anything genuinely interactive re-enables pointer events.
+   */
+  .story-layer {
+    pointer-events: none;
+  }
+
+  .story-layer a,
+  .story-layer button,
+  .story-layer input,
+  .story-layer select,
+  .story-layer textarea,
+  .story-layer label,
+  .story-layer [data-interactive] {
+    pointer-events: auto;
+  }
+
+  /* --------------------------------------------------------------- */
+  /* The stage                                                        */
+  /* --------------------------------------------------------------- */
+
+  .stage-backdrop {
+    background:
+      radial-gradient(
+        124% 88% at 50% 6%,
+        var(--stage-bg-accent) 0%,
+        transparent 58%
+      ),
+      var(--stage-bg);
+  }
+
+  .stage-vignette {
+    background: radial-gradient(
+      116% 100% at 50% 44%,
+      transparent 46%,
+      rgb(var(--stage-ink) / 0.07) 100%
+    );
+  }
+
+  /*
+   * The canvas is pinned to the *large* viewport so a collapsing mobile URL
+   * bar never resizes the WebGL drawing buffer mid-scroll.
+   */
+  .stage-canvas {
+    height: 100lvh;
+  }
+
+  /* --------------------------------------------------------------- */
+  /* Product hotspots (rendered through drei/Html)                    */
+  /* --------------------------------------------------------------- */
+
+  .dd-hotspot {
+    position: relative;
+    transition: opacity 160ms linear;
+  }
+
+  .dd-hotspot-button {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    height: 2rem;
+    min-width: 2rem;
+    padding-inline: 0.375rem;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.42);
+    background: rgb(255 255 255 / 0.1);
+    color: rgb(255 255 255 / 0.96);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    transition:
+      background-color 300ms var(--ease-out-expo),
+      border-color 300ms var(--ease-out-expo),
+      transform 300ms var(--ease-out-expo);
+  }
+
+  @media (hover: hover) {
+    .dd-hotspot-button {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .dd-hotspot-button:hover {
+      background: rgb(255 255 255 / 0.18);
+      border-color: rgb(255 255 255 / 0.7);
+      transform: scale(1.04);
+    }
+  }
+
+  .dd-hotspot-button[data-active="true"] {
+    background: rgb(var(--stage-accent));
+    border-color: transparent;
+    color: #fff;
+  }
+
+  .dd-hotspot-dot {
+    flex: none;
+    width: 0.4375rem;
+    height: 0.4375rem;
+    margin-inline: 0.3125rem;
+    border-radius: 999px;
+    background: currentColor;
+    box-shadow: 0 0 0 0.25rem rgb(255 255 255 / 0.14);
+  }
+
+  .dd-hotspot-label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4375rem;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      max-width 420ms var(--ease-out-expo),
+      opacity 260ms linear,
+      padding-right 420ms var(--ease-out-expo);
+  }
+
+  /*
+   * An open marker does not repeat its own name — the information panel is
+   * already showing it. It just becomes a solid accent dot.
+   */
+  .dd-hotspot-button:hover .dd-hotspot-label,
+  .dd-hotspot-button:focus-visible .dd-hotspot-label {
+    max-width: 13rem;
+    opacity: 1;
+    padding-right: 0.375rem;
+  }
+
+  .dd-hotspot-button[data-active="true"]:hover .dd-hotspot-label {
+    max-width: 0;
+    opacity: 0;
+    padding-right: 0;
+  }
+
+  .dd-hotspot-index {
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    opacity: 0.6;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .text-soft {
+    color: rgb(var(--stage-ink) / 0.62);
+  }
+
+  .text-faint {
+    color: rgb(var(--stage-ink) / 0.42);
+  }
+
+  .border-stage {
+    border-color: rgb(var(--stage-line) / 0.14);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                      */
+/* ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
