@@ -105,7 +105,12 @@ export function CaneRig({ quality, reducedMotion, hotspotPortal }: Props) {
       scratch.spin += pose.spin * dt * (1 - focus);
     }
 
-    const responsiveness = pose.responsiveness * (still ? 0 : 1);
+    /*
+     * Parallax is scaled back while a component is focused: the product is
+     * slender enough that the focus shots sit under a metre from the camera,
+     * where the full pointer shift would swing the detail out of frame.
+     */
+    const responsiveness = pose.responsiveness * (still ? 0 : 1) * (1 - focus * 0.7);
     let yaw =
       pose.rotation +
       scratch.spin +
