@@ -27,7 +27,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-      aria-label="DoDream — a smarter way to move"
+      lang="ko"
+      aria-label="두드림 — 보이지 않는 길을, 더 스마트하게"
       className="relative flex min-h-svh items-start pt-24 pb-24 sm:items-center sm:pt-20 sm:pb-20"
     >
       <CopyScrim edge="bottom" size="16svh" />
@@ -35,18 +36,23 @@ export function Hero() {
       <div className="relative shell w-full">
         <div className="max-w-[42rem]">
           <motion.p className="eyebrow" {...rise(0.05)}>
-            DoDream — Smart mobility
+            두드림 — SMART MOBILITY
           </motion.p>
 
+          {/*
+            The break is placed on the sentence's own joint — after the object
+            phrase, before the predicate — rather than wherever the container
+            happens to run out. Two lines, each a complete unit, and nothing
+            can strand a trailing syllable on a line of its own.
+          */}
           <motion.h1 className="display-xl mt-6" {...rise(0.14)}>
-            A smarter way
-            <br />
-            to move.
+            보이지 않는 길을,
+            <br />더 스마트하게.
           </motion.h1>
 
-          <motion.p className="lede mt-7 max-w-[38ch]" {...rise(0.24)}>
-            Reimagining the everyday cane with intelligent technology designed
-            around the way people move.
+          <motion.p className="lede mt-7" {...rise(0.24)}>
+            스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를
+            전달합니다.
           </motion.p>
 
           <motion.div
@@ -58,14 +64,14 @@ export function Hero() {
               className="btn btn-primary"
               onClick={() => scrollToChapter("product")}
             >
-              Explore DoDream
+              자세히 알아보기
             </button>
             <button
               type="button"
               className="btn btn-ghost"
               onClick={() => experience.setWaitlistOpen(true)}
             >
-              Join the Waitlist
+              대기열 등록
             </button>
           </motion.div>
         </div>
@@ -75,12 +81,12 @@ export function Hero() {
         className="absolute inset-x-0 bottom-7 flex justify-center sm:bottom-9"
         {...rise(0.55)}
       >
-        <span className="flex items-center gap-2.5 text-[0.6875rem] uppercase tracking-[0.22em] text-faint">
+        <span className="cue flex items-center gap-2.5 text-faint">
           <span aria-hidden="true" className="hidden sm:inline">
-            Move your cursor · Scroll to explore
+            커서를 움직여 보세요 · 스크롤
           </span>
           <span aria-hidden="true" className="sm:hidden">
-            Drag the cane · Scroll to explore
+            드래그해 보세요 · 스크롤
           </span>
           <ScrollLine reduced={reduced} />
         </span>
