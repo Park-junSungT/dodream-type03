@@ -1,0 +1,109 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { CopyScrim } from "@/components/ui/CopyScrim";
+import { experience, useExperience } from "@/lib/experience-store";
+import { scrollToChapter } from "@/lib/navigate";
+import { useReducedMotion } from "@/lib/use-reduced-motion";
+
+export function Hero() {
+  const reduced = useReducedMotion();
+  const introComplete = useExperience((state) => state.introComplete);
+
+  const rise = (delay: number) => ({
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 22 },
+    animate: introComplete
+      ? { opacity: 1, y: 0 }
+      : reduced
+        ? { opacity: 0 }
+        : { opacity: 0, y: 22 },
+    transition: {
+      duration: reduced ? 0.25 : 1,
+      delay: reduced ? 0 : delay,
+      ease: [0.16, 1, 0.3, 1] as const,
+    },
+  });
+
+  return (
+    <section
+      id="hero"
+      aria-label="DoDream — a smarter way to move"
+      className="relative flex min-h-svh items-start pt-24 pb-24 sm:items-center sm:pt-20 sm:pb-20"
+    >
+      <CopyScrim edge="bottom" size="16svh" />
+
+      <div className="relative shell w-full">
+        <div className="max-w-[42rem]">
+          <motion.p className="eyebrow" {...rise(0.05)}>
+            DoDream — Smart mobility
+          </motion.p>
+
+          <motion.h1 className="display-xl mt-6" {...rise(0.14)}>
+            A smarter way
+            <br />
+            to move.
+          </motion.h1>
+
+          <motion.p className="lede mt-7 max-w-[38ch]" {...rise(0.24)}>
+            Reimagining the everyday cane with intelligent technology designed
+            around the way people move.
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+            {...rise(0.32)}
+          >
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => scrollToChapter("product")}
+            >
+              Explore DoDream
+            </button>
+            <button
+              type="button"
+              className="btn btn-ghost"
+              onClick={() => experience.setWaitlistOpen(true)}
+            >
+              Join the Waitlist
+            </button>
+          </motion.div>
+        </div>
+      </div>
+
+      <motion.div
+        className="absolute inset-x-0 bottom-7 flex justify-center sm:bottom-9"
+        {...rise(0.55)}
+      >
+        <span className="flex items-center gap-2.5 text-[0.6875rem] uppercase tracking-[0.22em] text-faint">
+          <span aria-hidden="true" className="hidden sm:inline">
+            Move your cursor · Scroll to explore
+          </span>
+          <span aria-hidden="true" className="sm:hidden">
+            Drag the cane · Scroll to explore
+          </span>
+          <ScrollLine reduced={reduced} />
+        </span>
+      </motion.div>
+    </section>
+  );
+}
+
+function ScrollLine({ reduced }: { reduced: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className="relative block h-px w-10 overflow-hidden"
+      style={{ backgroundColor: "rgb(var(--stage-line) / 0.2)" }}
+    >
+      {reduced ? null : (
+        <motion.span
+          className="absolute inset-y-0 left-0 block w-4"
+          style={{ backgroundColor: "rgb(var(--stage-accent))" }}
+          animate={{ x: ["-1rem", "2.5rem"] }}
+          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
+    </span>
+  );
+}
