@@ -91,7 +91,7 @@ export function IntroOverlay() {
               DoDream
             </span>
             <span className="mt-5 text-[0.8125rem] text-faint">
-              Preparing your experience…
+              
             </span>
             <div
               className="mt-7 h-px w-40 overflow-hidden sm:w-56"

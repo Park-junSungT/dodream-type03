@@ -111,7 +111,7 @@ export function Navbar() {
             onClick={openWaitlist}
             className="btn btn-primary btn-sm ml-3"
           >
-            {joined ? "You're on the list" : "Join Waitlist"}
+            {joined ? "You're on the list" : "신청하기"}
           </button>
         </div>
 

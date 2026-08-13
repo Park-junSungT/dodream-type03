@@ -71,7 +71,7 @@ export function Hero() {
               className="btn btn-ghost"
               onClick={() => experience.setWaitlistOpen(true)}
             >
-              대기열 등록
+              신청하기
             </button>
           </motion.div>
         </div>

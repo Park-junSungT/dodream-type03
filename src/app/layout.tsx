@@ -36,12 +36,12 @@ const korean = Noto_Sans_KR({
 });
 
 const description =
-  "DoDream is reimagining the everyday cane with intelligent technology designed around the way people move.";
+  "스마트 지팡이";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dodream.example"),
   title: {
-    default: "DoDream — A smarter way to move.",
+    default: "두드림",
     template: "%s — DoDream",
   },
   description,
