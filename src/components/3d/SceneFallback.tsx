@@ -18,86 +18,74 @@ export function SceneFallback() {
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="dd-metal" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#6f6d68" />
-            <stop offset="28%" stopColor="#d8d6d0" />
-            <stop offset="55%" stopColor="#a3a09a" />
-            <stop offset="100%" stopColor="#5c5a56" />
+          <linearGradient id="dd-body" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#c9c6bf" />
+            <stop offset="26%" stopColor="#fbfaf7" />
+            <stop offset="62%" stopColor="#eceae4" />
+            <stop offset="100%" stopColor="#c2bfb8" />
           </linearGradient>
           <linearGradient id="dd-grip" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#1b1b1f" />
-            <stop offset="45%" stopColor="#3a3a41" />
-            <stop offset="100%" stopColor="#141417" />
+            <stop offset="0%" stopColor="#c0bdb5" />
+            <stop offset="30%" stopColor="#efedE7" />
+            <stop offset="70%" stopColor="#e0ddd5" />
+            <stop offset="100%" stopColor="#b6b3ac" />
           </linearGradient>
-          <linearGradient id="dd-copper" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#8a5535" />
-            <stop offset="50%" stopColor="#d3966a" />
-            <stop offset="100%" stopColor="#7d4d31" />
+          <linearGradient id="dd-metal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#7d7b77" />
+            <stop offset="30%" stopColor="#c8c6c1" />
+            <stop offset="65%" stopColor="#a2a09b" />
+            <stop offset="100%" stopColor="#75736f" />
           </linearGradient>
           <radialGradient id="dd-halo" cx="0.5" cy="0.5" r="0.5">
-            <stop offset="0%" stopColor="rgb(var(--stage-accent))" stopOpacity="0.16" />
+            <stop offset="0%" stopColor="rgb(var(--stage-accent))" stopOpacity="0.14" />
             <stop offset="100%" stopColor="rgb(var(--stage-accent))" stopOpacity="0" />
           </radialGradient>
         </defs>
 
-        <ellipse cx="120" cy="300" rx="120" ry="230" fill="url(#dd-halo)" />
+        <ellipse cx="120" cy="300" rx="118" ry="228" fill="url(#dd-halo)" />
 
-        {/* Swan-neck handle */}
+        {/* Body — one straight, slender run from grip to lower module */}
+        <rect x="110" y="96" width="21" height="484" fill="url(#dd-body)" />
+        <rect x="109" y="530" width="23" height="50" rx="2" fill="url(#dd-body)" />
+
+        {/* Textured grip under the cap */}
+        <rect x="109" y="60" width="23" height="92" rx="2" fill="url(#dd-grip)" />
+
+        {/* Brushed cap */}
         <path
-          d="M104 96 C104 62 128 44 158 46 C186 48 200 66 198 84"
-          stroke="url(#dd-grip)"
-          strokeWidth="21"
-          strokeLinecap="round"
+          d="M108 76 V56a12.5 12.5 0 0 1 25 0v20z"
+          fill="url(#dd-metal)"
         />
-        <path
-          d="M104 118 C104 78 126 58 156 60"
-          stroke="url(#dd-metal)"
-          strokeWidth="15"
-          strokeLinecap="round"
+        <rect x="108" y="74" width="25" height="2.4" fill="#8d8b86" opacity="0.55" />
+
+        {/* Front sensor and control */}
+        <circle cx="120.5" cy="192" r="9" fill="#b9b7b2" />
+        <circle cx="120.5" cy="192" r="6.6" fill="#0a0a0c" />
+        <circle cx="118.6" cy="189.6" r="1.9" fill="#3d3d45" />
+        <circle cx="120.5" cy="210" r="1.3" fill="#22222a" />
+        <circle cx="120.5" cy="226" r="6.4" fill="#e6e3dc" />
+        <circle
+          cx="120.5"
+          cy="226"
+          r="2.4"
+          fill="none"
+          stroke="#25252b"
+          strokeWidth="0.9"
         />
 
-        {/* Haptic collar */}
-        <rect x="95" y="136" width="18" height="16" rx="4" fill="url(#dd-copper)" />
-
-        {/* Shaft */}
+        {/* Lower module: service port, seam and rounded metal tip */}
+        <rect x="115" y="542" width="9.5" height="22" rx="4.75" fill="#1c1c1f" />
+        <rect x="109" y="578" width="23" height="4" fill="#1c1c1f" />
         <path
-          d="M104 150 L109 540"
-          stroke="url(#dd-metal)"
-          strokeWidth="14"
-          strokeLinecap="round"
-        />
-
-        {/* Charge collar */}
-        <rect x="96" y="214" width="17" height="20" rx="4" fill="url(#dd-grip)" />
-        <circle cx="104" cy="224" r="2.6" fill="#e2a171" />
-
-        {/* Sensor module */}
-        <rect x="112" y="286" width="20" height="48" rx="8" fill="url(#dd-grip)" />
-        <rect x="118" y="296" width="10" height="16" rx="3" fill="#0b0b0d" />
-        <rect x="118" y="316" width="8" height="8" rx="2.5" fill="#0b0b0d" />
-
-        {/* Ground-facing window */}
-        <rect x="110" y="452" width="16" height="30" rx="6" fill="url(#dd-grip)" />
-
-        {/* Ferrule + tip */}
-        <path
-          d="M109 540 L110 560"
-          stroke="url(#dd-metal)"
-          strokeWidth="18"
-          strokeLinecap="round"
-        />
-        <path
-          d="M110 562 L110 578"
-          stroke="#17171a"
-          strokeWidth="22"
-          strokeLinecap="round"
+          d="M109.5 582h22v6a11 11 0 0 1-22 0z"
+          fill="url(#dd-metal)"
         />
 
         <ellipse
-          cx="112"
-          cy="596"
-          rx="52"
-          ry="9"
+          cx="120"
+          cy="600"
+          rx="46"
+          ry="7"
           fill="rgb(var(--stage-ink))"
           opacity="0.1"
         />

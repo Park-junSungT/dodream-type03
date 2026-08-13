@@ -41,6 +41,11 @@ export type ProductFeature = {
   };
 };
 
+/*
+ * Anchors and focus cameras are measured off the product reference. They run
+ * top to bottom down the cane, which is also the order the markers are
+ * numbered in: 01 at the grip, 06 at the port in the base.
+ */
 export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   {
     id: "handle",
@@ -48,9 +53,13 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
     title: "Smart Handle",
     body: "Controls and sensing sit inside the grip, where the hand already rests. Nothing new to reach for.",
     detail: "Machined aluminium core, soft-touch polymer grip",
-    anchor: [0.2, 0.9, 0.0],
+    anchor: [0.0, 0.8, 0.036],
     nodeName: "hotspot_handle",
-    focus: { camera: [0.95, 1.12, 1.5], rotation: 0.42, target: [0.12, 0.86, 0] },
+    focus: {
+      camera: [0.27, 0.884, 0.528],
+      rotation: 0.42,
+      target: [0, 0.8, 0],
+    },
   },
   {
     id: "haptics",
@@ -58,19 +67,13 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
     title: "Haptic Feedback",
     body: "A quiet pulse in the handle, designed to pass along information through touch rather than sound.",
     detail: "Wide-band actuator in the upper collar",
-    anchor: [0.02, 0.7, 0.05],
+    anchor: [0.0, 0.62, 0.036],
     nodeName: "hotspot_haptics",
-    focus: { camera: [0.78, 0.86, 1.42], rotation: 0.2, target: [0, 0.68, 0] },
-  },
-  {
-    id: "battery",
-    label: "Battery",
-    title: "All-day Battery",
-    body: "Built for days of ordinary use, then topped up on a magnetic dock at the collar.",
-    detail: "Magnetic charge collar, USB-C dock",
-    anchor: [0.0, 0.42, 0.06],
-    nodeName: "hotspot_battery",
-    focus: { camera: [0.62, 0.55, 1.35], rotation: -0.15, target: [0, 0.42, 0] },
+    focus: {
+      camera: [0.212, 0.686, 0.414],
+      rotation: 0.5,
+      target: [0, 0.62, 0],
+    },
   },
   {
     id: "sensors",
@@ -78,9 +81,27 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
     title: "Sensor Array",
     body: "A forward-facing module intended to read the shape of the path ahead as you walk.",
     detail: "Time-of-flight and inertial sensing",
-    anchor: [0.0, 0.16, 0.07],
+    anchor: [0.0, 0.548, 0.041],
     nodeName: "hotspot_sensors",
-    focus: { camera: [0.5, 0.3, 1.24], rotation: -0.05, target: [0, 0.16, 0] },
+    focus: {
+      camera: [0.171, 0.601, 0.334],
+      rotation: 0.44,
+      target: [0, 0.548, 0],
+    },
+  },
+  {
+    id: "detection",
+    label: "Intelligent Detection",
+    title: "Intelligent Detection",
+    body: "On-device processing aims to turn what the sensors pick up into simple, timely cues.",
+    detail: "Runs locally, behind the control key",
+    anchor: [0.0, 0.444, 0.038],
+    nodeName: "hotspot_detection",
+    focus: {
+      camera: [0.153, 0.492, 0.299],
+      rotation: 0.47,
+      target: [0, 0.444, 0],
+    },
   },
   {
     id: "body",
@@ -88,19 +109,27 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
     title: "Lightweight Body",
     body: "A tapered aluminium shaft, balanced so the weight sits where the hand expects it to be.",
     detail: "Anodised 7000-series aluminium",
-    anchor: [0.0, -0.16, 0.05],
+    anchor: [0.0, -0.1, 0.034],
     nodeName: "hotspot_body",
-    focus: { camera: [0.72, -0.05, 1.55], rotation: 0.28, target: [0, -0.16, 0] },
+    focus: {
+      camera: [0.756, 0.005, 0.725],
+      rotation: 0.8,
+      target: [0, -0.1, 0],
+    },
   },
   {
-    id: "detection",
-    label: "Intelligent Detection",
-    title: "Intelligent Detection",
-    body: "On-device processing aims to turn what the sensors pick up into simple, timely cues.",
-    detail: "Runs locally, near the ground-facing window",
-    anchor: [0.0, -0.62, 0.06],
-    nodeName: "hotspot_detection",
-    focus: { camera: [0.55, -0.5, 1.3], rotation: -0.12, target: [0, -0.62, 0] },
+    id: "battery",
+    label: "Battery",
+    title: "All-day Battery",
+    body: "Built for days of ordinary use, then topped up on a magnetic dock at the collar.",
+    detail: "Sealed cell, service port in the base",
+    anchor: [0.0, -0.895, 0.038],
+    nodeName: "hotspot_battery",
+    focus: {
+      camera: [0.162, -0.845, 0.317],
+      rotation: 0.4,
+      target: [0, -0.895, 0],
+    },
   },
 ] as const;
 

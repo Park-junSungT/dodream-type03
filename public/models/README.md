@@ -47,12 +47,20 @@ the model author move a marker without a code change.
 The whole scene budget assumes a product in the low hundreds of KB:
 
 - Draco or Meshopt compression (both are handled by the loader)
-- KTX2/Basis textures if the model is textured at all — the placeholder uses
-  none, and the studio environment does the heavy lifting for the look
-- Merge meshes where you can; the placeholder is ~14 draw calls
+- KTX2/Basis textures if the model is textured at all — the procedural model
+  uses one 128px canvas (the grip knurl) and nothing else, and the studio
+  environment does the heavy lifting for the look
+- Merge meshes where you can; the procedural model is ~17 draw calls
 - No animation tracks are read, and no cameras or lights are used from the file
 
 ## If the file is missing or broken
 
-The procedural placeholder renders in its place and the page carries on
-without an error. That is deliberate: the model is an asset, not a dependency.
+The procedural model renders in its place and the page carries on without an
+error. That is deliberate: the model is an asset, not a dependency.
+
+## The procedural model
+
+`components/3d/ProceduralCane.tsx` reproduces the product from the three-view
+reference in `public/references/smart-cane-model-ref.png`. Its constants are
+measurements off that image, so it is the reference for proportions until the
+real GLB lands.
