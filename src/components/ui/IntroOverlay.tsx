@@ -90,9 +90,6 @@ export function IntroOverlay() {
             <span className="font-display text-[clamp(2rem,6vw,3.25rem)] font-medium tracking-[-0.045em]">
               DoDream
             </span>
-            <span className="mt-5 text-[0.8125rem] text-faint">
-              경험을 준비하고 있습니다
-            </span>
             <div
               className="mt-7 h-px w-40 overflow-hidden sm:w-56"
               style={{ backgroundColor: "rgb(var(--stage-line) / 0.16)" }}
