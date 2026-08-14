@@ -1,38 +1,49 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, Noto_Sans_KR } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const display = Inter_Tight({
-  variable: "--font-display-latin",
-  subsets: ["latin"],
+/*
+ * One face sets the whole site, Latin and Hangul alike.
+ *
+ * It used to take three: Inter Tight for display, Inter for body, Noto Sans KR
+ * for Hangul. That left a seam inside any single word that mixed scripts —
+ * "DoDream을" drew its Latin from Inter Tight and its Hangul from Noto, at
+ * different weights of colour. Pretendard is drawn on Inter's Latin skeleton
+ * and carries Hangul in the same voice, so the seam is gone and the Latin
+ * proportions the design was built around are kept.
+ *
+ * Both files are cut from Pretendard Variable and served from this origin —
+ * no request leaves for a font CDN. See scripts/build-pretendard-subset.py for
+ * how they are generated and why the face is split in two.
+ */
+const pretendard = localFont({
+  src: "../fonts/PretendardVariable.subset.woff2",
+  variable: "--font-pretendard",
+  weight: "45 920",
   display: "swap",
-  weight: ["400", "500", "600"],
-});
-
-const sans = Inter({
-  variable: "--font-sans-latin",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500"],
+  // The stack below is composed by hand in globals.css, so next/font must not
+  // splice an Arial-metric fallback in between the two Pretendard tiers.
+  adjustFontFallback: false,
 });
 
 /*
- * Inter and Inter Tight carry no Hangul, so Korean copy was falling through to
- * whatever the OS had — Malgun Gothic on Windows, which is why the Korean hero
- * looked nothing like the rest of the brand.
- *
- * This sits *after* the Latin faces in the stack, so Latin glyphs and numerals
- * still come from Inter Tight and only Hangul resolves here. The site's
- * existing typography is unchanged; Korean simply stops being a fallback.
- *
- * Google slices this face by unicode-range, so a reader only ever downloads
- * the handful of slices the page's Hangul actually needs.
+ * The rest of KS X 1001, for Hangul the first file does not carry — in
+ * practice a reader typing an uncommon name into the waitlist form. It is
+ * never preloaded and never fetched unless such a syllable is actually set.
  */
-const korean = Noto_Sans_KR({
-  variable: "--font-korean",
-  subsets: ["latin"],
+const pretendardKoExt = localFont({
+  src: "../fonts/PretendardVariable.ko-ext.woff2",
+  variable: "--font-pretendard-ko-ext",
+  weight: "45 920",
   display: "swap",
-  weight: ["400", "500", "600"],
+  preload: false,
+  adjustFontFallback: false,
+  declarations: [
+    {
+      prop: "unicode-range",
+      value: "U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF",
+    },
+  ],
 });
 
 const description =
@@ -82,7 +93,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="ko"
-      className={`${display.variable} ${sans.variable} ${korean.variable} h-full antialiased`}
+      className={`${pretendard.variable} ${pretendardKoExt.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

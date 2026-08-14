@@ -14,18 +14,23 @@
 }
 
 /*
- * The Korean face sits after the Latin ones in every stack. Font fallback is
- * resolved per glyph, so Latin and numerals keep coming from Inter Tight and
- * Inter, and only Hangul reaches the Korean face. The system names after it
- * cover a reader whose network drops the webfont.
+ * Pretendard sets everything, Latin and Hangul in one voice. The extended cut
+ * behind it only ever answers for Hangul the first file does not carry, and
+ * font matching runs per glyph, so the two read as a single face. The system
+ * names after them cover a reader whose network drops the webfont.
+ *
+ * Display and body point at the same stack — the hierarchy is carried by size,
+ * weight and tracking, which is what the Korean layer further down tunes. The
+ * two tokens stay separate so a distinct display face can return without
+ * touching a single component.
  */
 @theme inline {
   --font-display:
-    var(--font-display-latin), var(--font-korean), "Apple SD Gothic Neo",
-    "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
+    var(--font-pretendard), var(--font-pretendard-ko-ext),
+    "Apple SD Gothic Neo", "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
   --font-sans:
-    var(--font-sans-latin), var(--font-korean), "Apple SD Gothic Neo",
-    "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
+    var(--font-pretendard), var(--font-pretendard-ko-ext),
+    "Apple SD Gothic Neo", "Malgun Gothic", ui-sans-serif, system-ui, sans-serif;
 }
 
 /*
@@ -174,14 +179,27 @@
      * The measure is set in `em`, which caps the headline at roughly eight
      * and a half Hangul glyphs per line and scales with the type, so it can
      * never creep toward the product no matter how the copy changes.
+     *
+     * The ceiling rose with Pretendard. It sets Hangul appreciably narrower
+     * than the face this was first tuned against, which left the hero sitting
+     * lighter in its column than the design intends — so the type grew to hold
+     * the same presence rather than the same number. The floor is deliberately
+     * unchanged: at 360px the first line already runs to 91% of the measure,
+     * and that is the width that decides how large this can be.
      */
-    font-size: clamp(2.75rem, 6.6vw, 5.2rem);
+    font-size: clamp(2.75rem, 7.4vw, 5.6rem);
     line-height: 1.14;
     letter-spacing: -0.022em;
     max-width: 8.5em;
   }
 
   .display-lg:lang(ko) {
+    /*
+     * This one stays where it is. Chapter 03 sets its heading in a 30rem
+     * column, and at this size the longer line already runs to within 45px of
+     * that edge — a few more points and "휴대성을 중심으로 / 설계했습니다."
+     * breaks to three lines. The ceiling here is the container, not the face.
+     */
     font-size: clamp(1.8rem, 4.4vw, 3.9rem);
     line-height: 1.2;
     letter-spacing: -0.02em;
