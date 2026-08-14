@@ -92,7 +92,7 @@ export function Hero() {
                 className="block h-[0.3125rem] w-[0.3125rem] flex-none rounded-full"
                 style={{ backgroundColor: "rgb(var(--stage-accent))" }}
               />
-              출시 소식 가장 먼저 받아보기
+              현재까지 18,791명이 신청 하였습니다.
             </button>
           </motion.div>
         </div>
