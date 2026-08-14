@@ -134,9 +134,7 @@ function Hotspot({ id, label, index, exploring, portal }: HotspotProps) {
             className="dd-hotspot-button"
             data-active={isActive ? "true" : undefined}
             aria-pressed={isActive}
-            aria-label={
-              isActive ? `Close ${label} details` : `Show ${label} details`
-            }
+            aria-label={isActive ? `${label} 닫기` : `${label} 자세히 보기`}
             tabIndex={exploring ? 0 : -1}
             onClick={(event) => {
               event.stopPropagation();

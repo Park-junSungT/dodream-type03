@@ -8,10 +8,10 @@
  */
 
 export const WAITLIST_INTERESTS = [
-  { value: "myself", label: "Myself" },
-  { value: "family", label: "Parent / Family member" },
-  { value: "caregiver", label: "Caregiver" },
-  { value: "other", label: "Other" },
+  { value: "myself", label: "나를 위해" },
+  { value: "family", label: "부모님 / 가족을 위해" },
+  { value: "caregiver", label: "보호자를 위해" },
+  { value: "other", label: "기타" },
 ] as const;
 
 export type WaitlistInterest = (typeof WAITLIST_INTERESTS)[number]["value"];
@@ -42,15 +42,15 @@ export function validateWaitlist(
   const errors: WaitlistFieldErrors = {};
 
   if (!submission.name.trim()) {
-    errors.name = "Please tell us your name.";
+    errors.name = "이름을 입력해주세요.";
   }
   if (!submission.email.trim()) {
-    errors.email = "Please add an email address.";
+    errors.email = "이메일을 입력해주세요.";
   } else if (!EMAIL_PATTERN.test(submission.email.trim())) {
-    errors.email = "That email address doesn't look right.";
+    errors.email = "이메일 형식을 확인해주세요.";
   }
   if (!submission.interest) {
-    errors.interest = "Please choose one.";
+    errors.interest = "하나를 선택해주세요.";
   }
 
   return errors;
@@ -61,7 +61,7 @@ export async function submitWaitlist(
 ): Promise<WaitlistResult> {
   const fields = validateWaitlist(submission);
   if (Object.keys(fields).length > 0) {
-    return { ok: false, message: "Please check the highlighted fields.", fields };
+    return { ok: false, message: "입력한 내용을 다시 확인해주세요.", fields };
   }
 
   const payload = {
@@ -79,7 +79,7 @@ export async function submitWaitlist(
   } catch {
     return {
       ok: false,
-      message: "Something went wrong on our side. Please try again.",
+      message: "문제가 발생했어요. 잠시 후 다시 시도해주세요.",
     };
   }
 }
@@ -99,7 +99,7 @@ async function postToEndpoint(
   if (!response.ok) {
     return {
       ok: false,
-      message: "We couldn't reach the waitlist just now. Please try again.",
+      message: "지금은 연결이 어려워요. 잠시 후 다시 시도해주세요.",
     };
   }
   return { ok: true };

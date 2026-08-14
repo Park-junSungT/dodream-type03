@@ -94,31 +94,31 @@ const NIGHT_OPEN: StageMood = {
 };
 
 export const CHAPTERS: readonly Chapter[] = [
-  { id: "hero", index: 0, label: "Introduction", mood: PAPER },
+  { id: "hero", index: 0, label: "소개", mood: PAPER },
   {
     id: "product",
     index: 1,
-    label: "More than a cane",
-    navLabel: "스마트지팡이",
+    label: "지팡이를 다시 생각했습니다",
+    navLabel: "제품",
     mood: PAPER_DEEP,
   },
-  { id: "explore", index: 2, label: "Designed around you", mood: STUDIO },
+  { id: "explore", index: 2, label: "당신을 중심으로", mood: STUDIO },
   {
     id: "technology",
     index: 3,
-    label: "Technology",
-    navLabel: "기능",
+    label: "기술",
+    navLabel: "기술",
     mood: NIGHT,
   },
   {
     id: "vision",
     index: 4,
-    label: "Vision",
+    label: "비전",
     navLabel: "비전",
     mood: NIGHT_OPEN,
   },
-  { id: "waitlist", index: 5, label: "Join the waitlist", mood: PAPER },
-] as const;
+  { id: "waitlist", index: 5, label: "관심 등록", mood: PAPER },
+] as const;;
 
 export const LAST_CHAPTER = CHAPTERS.length - 1;
 

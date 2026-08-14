@@ -13,20 +13,19 @@ export function Waitlist() {
   return (
     <section
       id="waitlist"
-      aria-label="Be part of the next step"
+      aria-label="DoDream을 먼저 만나보세요"
       className="relative flex min-h-svh flex-col justify-end pt-40 sm:pt-48"
     >
       <div className="shell w-full">
         <div className="mx-auto max-w-[44rem] text-center">
           <Reveal amount={0.3}>
-            <p className="eyebrow">06 — Next step</p>
-            <h2 className="display-lg mt-6 max-w-[16ch] mx-auto">
-              Be part of the next step.
+            <p className="eyebrow">06 — 다음 단계</p>
+            <h2 className="display-lg mt-6 mx-auto">
+              DoDream을
+              <br />먼저 만나보세요.
             </h2>
-            <p className="lede mx-auto mt-7 max-w-[46ch]">
-              DoDream is currently exploring the future of smart mobility. Join
-              the waitlist to be the first to hear when DoDream becomes
-              available.
+            <p className="lede mx-auto mt-7">
+              DoDream의 출시 소식을 가장 먼저 받아보세요.
             </p>
           </Reveal>
 
@@ -37,12 +36,12 @@ export function Waitlist() {
                 className="btn btn-primary h-[3.25rem] px-8"
                 onClick={() => experience.setWaitlistOpen(true)}
               >
-                {joined ? "You're on the list" : "Join the DoDream Waitlist"}
+                {joined ? "등록 완료" : "관심 등록하기"}
               </button>
               <p className="text-[0.75rem] text-faint">
                 {joined
-                  ? "We'll keep you updated as DoDream takes its next step."
-                  : "No commitment — we'll only get in touch when there's news."}
+                  ? "새로운 소식을 가장 먼저 전해드릴게요."
+                  : "부담 없이 등록하세요. 소식이 있을 때만 연락드립니다."}
               </p>
             </div>
           </Reveal>
@@ -57,9 +56,10 @@ export function Waitlist() {
           <span className="font-display text-[0.9375rem] font-medium tracking-[-0.02em]">
             DoDream
           </span>
-          <p className="max-w-[46ch] text-[0.6875rem] leading-relaxed text-faint">
-            DoDream is an early-stage product concept. Product imagery is a
-            design representation and specifications are indicative.
+          <p className="max-w-[38em] text-[0.6875rem] leading-relaxed text-faint">
+            시각장애인의 더 나은 이동을 위한 스마트 지팡이. DoDream은 초기 단계의
+            제품 콘셉트이며, 제품 이미지는 디자인 표현이고 사양은 확정되지
+            않았습니다.
           </p>
         </div>
       </footer>

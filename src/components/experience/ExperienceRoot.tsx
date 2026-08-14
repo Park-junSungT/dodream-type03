@@ -32,7 +32,7 @@ export function ExperienceRoot() {
         href="#waitlist"
         className="sr-only rounded-full px-4 py-2 focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-[rgb(var(--stage-ink))] focus:text-[var(--stage-bg)]"
       >
-        Skip to the waitlist
+        관심 등록으로 바로가기
       </a>
 
       <Navbar />

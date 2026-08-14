@@ -27,7 +27,6 @@ export function Hero() {
   return (
     <section
       id="hero"
-      lang="ko"
       aria-label="두드림 — 보이지 않는 길을, 더 안전하게"
       className="relative flex min-h-svh items-start pt-24 pb-24 sm:items-center sm:pt-20 sm:pb-20"
     >
@@ -36,7 +35,7 @@ export function Hero() {
       <div className="relative shell w-full">
         <div className="max-w-[42rem]">
           <motion.p className="eyebrow" {...rise(0.05)}>
-            두드림 — SMART MOBILITY
+            두드림 — 스마트 모빌리티
           </motion.p>
 
           {/*
@@ -64,14 +63,14 @@ export function Hero() {
               className="btn btn-primary"
               onClick={() => scrollToChapter("product")}
             >
-              자세히 알아보기
+              DoDream 알아보기
             </button>
             <button
               type="button"
               className="btn btn-ghost"
               onClick={() => experience.setWaitlistOpen(true)}
             >
-              신청하기
+              관심 등록하기
             </button>
           </motion.div>
         </div>
