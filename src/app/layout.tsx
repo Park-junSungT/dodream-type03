@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     "이동 보조",
   ],
   openGraph: {
-    title: "DoDream — 스마트 지팡이",
+    title: "두드림 — 스마트 지팡이",
     description:
       "스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를 전달합니다.",
     siteName: "DoDream",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "DoDream — 스마트 지팡이",
+    title: "두드림 — 스마트 지팡이",
     description:
       "스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를 전달합니다.",
     images: ["/og-image.png"],
