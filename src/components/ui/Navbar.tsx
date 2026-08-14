@@ -86,7 +86,7 @@ export function Navbar() {
           }}
           className="font-display text-[1.0625rem] font-medium tracking-[-0.02em]"
         >
-          DoDream
+          두드림
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -111,7 +111,7 @@ export function Navbar() {
             onClick={openWaitlist}
             className="btn btn-primary btn-sm ml-3"
           >
-            {joined ? "등록 완료" : "관심 등록"}
+            {joined ? "신청 완료" : "신청하기"}
           </button>
         </div>
 
@@ -183,7 +183,7 @@ export function Navbar() {
                 onClick={openWaitlist}
                 className="btn btn-primary mt-4 w-full"
               >
-                {joined ? "등록 완료" : "관심 등록하기"}
+                {joined ? "신청 완료" : "신청하기"}
               </button>
             </div>
           </motion.div>

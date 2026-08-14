@@ -88,7 +88,7 @@ export function IntroOverlay() {
             transition={{ duration: reduced ? 0.15 : 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-display text-[clamp(2rem,6vw,3.25rem)] font-medium tracking-[-0.045em]">
-              DoDream
+              두드림
             </span>
             <div
               className="mt-7 h-px w-40 overflow-hidden sm:w-56"

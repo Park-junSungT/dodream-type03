@@ -35,7 +35,7 @@ export function Hero() {
       <div className="relative shell w-full">
         <div className="max-w-[42rem]">
           <motion.p className="eyebrow" {...rise(0.05)}>
-            두드림 — 스마트 모빌리티
+            두드림 — 스마트 지팡이
           </motion.p>
 
           {/*

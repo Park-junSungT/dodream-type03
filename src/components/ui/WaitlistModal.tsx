@@ -188,12 +188,12 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
 
         {status === "done" ? (
           <div className="py-4">
-            <p className="eyebrow">DoDream</p>
+            <p className="eyebrow">두드림</p>
             <h2 id={titleId} className="display-md mt-4">
-              관심 등록이 완료되었습니다.
+              신청서가 등록 되었습니다.
             </h2>
             <p id={descriptionId} className="lede mt-4">
-              DoDream의 새로운 소식을 가장 먼저 전해드릴게요.
+              이메일로 안내 메일을 보내드리겠습니다.
             </p>
             <button
               type="button"
@@ -205,12 +205,12 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
           </div>
         ) : (
           <form onSubmit={onSubmit} noValidate>
-            <p className="eyebrow">관심 등록</p>
+            <p className="eyebrow">스마트 지팡이 신청서</p>
             <h2 id={titleId} className="display-md mt-4">
-              DoDream의 소식을 받아보세요.
+              스마트 지팡이 신청
             </h2>
             <p id={descriptionId} className="lede mt-3 text-[0.9375rem]">
-              출시 및 새로운 소식을 가장 먼저 알려드립니다.
+              이메일을 입력해 주시면 안내 메일을 보내드릴게요
             </p>
 
             <div className="mt-7 flex flex-col gap-5">
@@ -304,12 +304,12 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
               disabled={status === "submitting"}
               style={{ opacity: status === "submitting" ? 0.65 : 1 }}
             >
-              {status === "submitting" ? "등록 중…" : "관심 등록하기"}
+              {status === "submitting" ? "신청 중…" : "신청하기"}
             </button>
 
-            <p className="mt-4 text-center text-[0.6875rem] leading-relaxed text-faint">
+            {/* <p className="mt-4 text-center text-[0.6875rem] leading-relaxed text-faint">
               입력하신 정보는 DoDream 소식 전달에만 사용합니다.
-            </p>
+            </p> */}
           </form>
         )}
       </motion.div>

@@ -21,12 +21,12 @@ export function Waitlist() {
           <Reveal amount={0.3}>
             <p className="eyebrow">06 — 다음 단계</p>
             <h2 className="display-lg mt-6 mx-auto">
-              DoDream을
-              <br />먼저 만나보세요.
+              스마트 지팡이를
+              <br />사용해 보세요
             </h2>
-            <p className="lede mx-auto mt-7">
+            {/* <p className="lede mx-auto mt-7">
               DoDream의 출시 소식을 가장 먼저 받아보세요.
-            </p>
+            </p> */}
           </Reveal>
 
           <Reveal amount={0.3} delay={0.1}>
@@ -36,12 +36,12 @@ export function Waitlist() {
                 className="btn btn-primary h-[3.25rem] px-8"
                 onClick={() => experience.setWaitlistOpen(true)}
               >
-                {joined ? "등록 완료" : "관심 등록하기"}
+                {joined ? "신청 완료" : "신청하기"}
               </button>
               <p className="text-[0.75rem] text-faint">
                 {joined
-                  ? "새로운 소식을 가장 먼저 전해드릴게요."
-                  : "부담 없이 등록하세요. 소식이 있을 때만 연락드립니다."}
+                  ? ""
+                  : ""}
               </p>
             </div>
           </Reveal>
@@ -54,13 +54,13 @@ export function Waitlist() {
           style={{ borderColor: "rgb(var(--stage-line) / 0.1)" }}
         >
           <span className="font-display text-[0.9375rem] font-medium tracking-[-0.02em]">
-            DoDream
+            두드림 - 스마트 지팡이
           </span>
-          <p className="max-w-[38em] text-[0.6875rem] leading-relaxed text-faint">
+          {/* <p className="max-w-[38em] text-[0.6875rem] leading-relaxed text-faint">
             시각장애인의 더 나은 이동을 위한 스마트 지팡이. DoDream은 초기 단계의
             제품 콘셉트이며, 제품 이미지는 디자인 표현이고 사양은 확정되지
             않았습니다.
-          </p>
+          </p> */}
         </div>
       </footer>
     </section>

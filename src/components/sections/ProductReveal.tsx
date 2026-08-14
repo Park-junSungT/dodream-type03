@@ -7,9 +7,9 @@ import { Reveal } from "@/components/ui/Reveal";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const SPECS = [
-  { label: "무게", value: "380g 미만" },
+  { label: "무게", value: "380g" },
   { label: "소재", value: "알루미늄" },
-  { label: "손잡이", value: "센서 내장" },
+  { label: "지팡이", value: "센서 장착" },
 ];
 
 /**

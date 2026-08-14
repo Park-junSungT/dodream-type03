@@ -41,7 +41,7 @@ export function InteractiveFeatures() {
                 <br />설계했습니다.
               </h2>
               <p className="lede mt-6">
-                스마트 지팡이를 돌려보고, 자세한 정보를 확인해보세요
+                스마트 지팡이의 자세한 정보를 확인해보세요
               </p>
             </Reveal>
           </motion.div>
