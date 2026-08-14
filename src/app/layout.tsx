@@ -52,7 +52,7 @@ const description = "두드림"
 export const metadata: Metadata = {
   metadataBase: new URL("https://dodream.example"),
   title: {
-    default: "두드림 — 지팡이를 다시 생각하다",
+    default: "두드림 — 스마트 지팡이",
     template: "%s — 두드림",
   },
   description,
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     "이동 보조",
   ],
   openGraph: {
-    title: "두드림 — 지팡이를 다시 생각하다",
+    title: "두드림 — 스마트 지팡이",
     description,
     siteName: "DoDream",
     locale: "ko_KR",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "두드림 — 지팡이를 다시 생각하다",
+    title: "두드림 — 스마트 지팡이",
     description,
   },
 };
