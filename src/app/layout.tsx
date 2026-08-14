@@ -72,16 +72,16 @@ export const metadata: Metadata = {
     title: "두드림 — 스마트 지팡이",
     description:
       "스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를 전달합니다.",
-    siteName: "DoDream",
+    siteName: "두드림",
     locale: "ko_KR",
     type: "website",
     url: "https://ddmove.vercel.app",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image2.png",
         width: 1200,
         height: 630,
-        alt: "DoDream 스마트 지팡이",
+        alt: "두드림 스마트 지팡이",
       },
     ],
   },
