@@ -67,16 +67,28 @@ export const metadata: Metadata = {
     "이동 보조",
   ],
   openGraph: {
-    title: "두드림 — 스마트 지팡이",
-    description,
+    title: "DoDream — 지팡이의 역할을 다시 생각하다.",
+    description:
+      "스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를 전달합니다.",
     siteName: "DoDream",
     locale: "ko_KR",
     type: "website",
+    url: "https://ddmove.vercel.app",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "DoDream 스마트 지팡이",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "두드림 — 스마트 지팡이",
-    description,
+    title: "DoDream — 지팡이의 역할을 다시 생각하다.",
+    description:
+      "스마트 기술을 지팡이에 담아, 주변을 먼저 살피고 필요한 정보를 전달합니다.",
+    images: ["/og-image.png"],
   },
 };
 
