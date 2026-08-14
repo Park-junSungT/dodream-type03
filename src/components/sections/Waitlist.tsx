@@ -36,7 +36,7 @@ export function Waitlist() {
                 className="btn btn-primary h-[3.25rem] px-8"
                 onClick={() => experience.setWaitlistOpen(true)}
               >
-                {joined ? "신청 완료" : "신청하기"}
+                {joined ? "신청 완료" : "바로가기"}
               </button>
               <p className="text-[0.75rem] text-faint">
                 {joined

@@ -70,7 +70,7 @@ export function Hero() {
               className="btn btn-ghost"
               onClick={() => experience.setWaitlistOpen(true)}
             >
-              지팡이 받기
+              바로가기
             </button>
           </motion.div>
         </div>

@@ -111,7 +111,7 @@ export function Navbar() {
             onClick={openWaitlist}
             className="btn btn-primary btn-sm ml-3"
           >
-            {joined ? "신청 완료" : "신청하기"}
+            {joined ? "신청 완료" : "바로가기"}
           </button>
         </div>
 
@@ -183,7 +183,7 @@ export function Navbar() {
                 onClick={openWaitlist}
                 className="btn btn-primary mt-4 w-full"
               >
-                {joined ? "신청 완료" : "신청하기"}
+                {joined ? "신청 완료" : "바로가기"}
               </button>
             </div>
           </motion.div>

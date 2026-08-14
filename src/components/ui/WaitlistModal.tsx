@@ -304,7 +304,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
               disabled={status === "submitting"}
               style={{ opacity: status === "submitting" ? 0.65 : 1 }}
             >
-              {status === "submitting" ? "신청 중…" : "신청하기"}
+              {status === "submitting" ? "신청 중…" : "바로가기"}
             </button>
 
             {/* <p className="mt-4 text-center text-[0.6875rem] leading-relaxed text-faint">
