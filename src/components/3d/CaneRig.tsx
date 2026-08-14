@@ -188,7 +188,16 @@ export function CaneRig({ quality, reducedMotion, hotspotPortal }: Props) {
         -localTarget[0] * sin + localTarget[2] * cos,
       );
 
-      // The authored camera is an offset from that target, scaled per layout.
+      /*
+       * The authored camera gives the *direction* of the shot; how far back it
+       * sits is FOCUS_DISTANCE, in cane units.
+       *
+       * It used to be a multiplier on the raw offset instead, which meant the
+       * framing rode on however far out each feature's camera point happened
+       * to be authored — those lengths run 0.34 to 0.60, so the same setting
+       * framed one hotspot nearly twice as tight as another, and all of them
+       * far too close. Normalising first makes the distance mean the distance.
+       */
       const distance = FOCUS_DISTANCE[motion.layout];
       scratch.focusCamera
         .set(
@@ -196,6 +205,7 @@ export function CaneRig({ quality, reducedMotion, hotspotPortal }: Props) {
           feature.focus.camera[1] - localTarget[1],
           feature.focus.camera[2] - localTarget[2],
         )
+        .normalize()
         .multiplyScalar(distance)
         .add(scratch.focusTarget);
 
