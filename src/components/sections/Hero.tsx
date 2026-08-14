@@ -28,7 +28,7 @@ export function Hero() {
     <section
       id="hero"
       lang="ko"
-      aria-label="두드림 — 보이지 않는 길을, 더 스마트하게"
+      aria-label="두드림 — 보이지 않는 길을, 더 안전하게"
       className="relative flex min-h-svh items-start pt-24 pb-24 sm:items-center sm:pt-20 sm:pb-20"
     >
       <CopyScrim edge="bottom" size="16svh" />
@@ -47,7 +47,7 @@ export function Hero() {
           */}
           <motion.h1 className="display-xl mt-6" {...rise(0.14)}>
             보이지 않는 길을,
-            <br />더 스마트하게.
+            <br />더 안전하게
           </motion.h1>
 
           <motion.p className="lede mt-7" {...rise(0.24)}>
