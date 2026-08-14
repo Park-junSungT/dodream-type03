@@ -63,14 +63,14 @@ export function Hero() {
               className="btn btn-primary"
               onClick={() => scrollToChapter("product")}
             >
-              DoDream 알아보기
+              스마트 지팡이 알아보기
             </button>
             <button
               type="button"
               className="btn btn-ghost"
               onClick={() => experience.setWaitlistOpen(true)}
             >
-              관심 등록하기
+              지팡이 받기
             </button>
           </motion.div>
         </div>

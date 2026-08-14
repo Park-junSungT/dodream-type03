@@ -7,8 +7,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const SPECS = [
-  { label: "무게", value: "400g 미만" },
-  { label: "소재", value: "아노다이징 알루미늄" },
+  { label: "무게", value: "380g 미만" },
+  { label: "소재", value: "알루미늄" },
   { label: "손잡이", value: "센서 내장" },
 ];
 
@@ -37,7 +37,7 @@ export function ProductReveal() {
     <section
       id="product"
       ref={sectionRef}
-      aria-label="지팡이를 다시 생각했습니다"
+      aria-label="스마트 지팡이를 소개합니다"
       className="relative min-h-[200svh]"
     >
       <div className="sticky top-0 flex h-svh flex-col justify-between py-24 sm:py-28">
@@ -48,8 +48,8 @@ export function ProductReveal() {
           <Reveal amount={0.2}>
             <p className="eyebrow">02 — 제품</p>
             <h2 className="display-lg mt-5">
-              지팡이를
-              <br />다시 생각했습니다.
+              스마트 지팡이를
+              <br />소개합니다
             </h2>
           </Reveal>
         </div>
@@ -60,9 +60,11 @@ export function ProductReveal() {
             style={{ opacity: detailOpacity, y: detailShift }}
           >
             <p className="lede max-w-none">
-              흰지팡이는 오랫동안 일상적인 이동을 함께해온 도구입니다. DoDream은
+              스마트 지팡이는 거동이 불편한 시각장애인을 위해 안전한 보행을 목적으로 
+              설계된 스마트 지팡이입니다.
+              {/* 흰지팡이는 오랫동안 일상적인 이동을 함께해온 도구입니다. DoDream은
               그 익숙한 형태에 스마트 기술을 더해, 지팡이가 할 수 있는 일을
-              넓혀갑니다.
+              넓혀갑니다. */}
             </p>
 
             <dl className="mt-8 grid grid-cols-3 gap-4 border-t pt-6 border-stage">

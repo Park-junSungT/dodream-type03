@@ -20,8 +20,8 @@ export function Technology() {
           <Reveal amount={0.3}>
             <p className="eyebrow">04 — 기술</p>
             <h2 className="display-lg mt-5">
-              기술은
-              <br />자연스러워야 하니까.
+              안전을
+              <br />중심으로 설계했습니다.
             </h2>
           </Reveal>
         </div>

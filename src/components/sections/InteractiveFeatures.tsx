@@ -35,13 +35,13 @@ export function InteractiveFeatures() {
             transition={{ duration: reduced ? 0.15 : 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <Reveal amount={0.2}>
-              <p className="eyebrow">03 — 살펴보기</p>
+              <p className="eyebrow">03 — 세부정보</p>
               <h2 className="display-lg mt-5">
-                당신을 중심으로
+                휴대성을 중심으로
                 <br />설계했습니다.
               </h2>
               <p className="lede mt-6">
-                제품을 돌려보고, 표시를 열어 안에 무엇이 있는지 확인해보세요.
+                스마트 지팡이를 돌려보고, 자세한 정보를 확인해보세요
               </p>
             </Reveal>
           </motion.div>

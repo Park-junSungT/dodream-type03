@@ -98,7 +98,7 @@ export const CHAPTERS: readonly Chapter[] = [
   {
     id: "product",
     index: 1,
-    label: "지팡이를 다시 생각했습니다",
+    label: "스마트 지팡이를 소개합니다",
     navLabel: "제품",
     mood: PAPER_DEEP,
   },
