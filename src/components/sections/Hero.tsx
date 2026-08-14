@@ -73,6 +73,28 @@ export function Hero() {
               바로가기
             </button>
           </motion.div>
+
+          {/*
+            The quiet invitation. It sits under the pair rather than inside it,
+            so it can never become a third item competing for the CTA row or
+            stack into it on a narrow screen. No box, no badge — just the
+            hero's own small-text colour, one accent dot to catch the eye, and
+            the same fake door the ghost button opens.
+          */}
+          <motion.div className="mt-6" {...rise(0.4)}>
+            <button
+              type="button"
+              onClick={() => experience.setWaitlistOpen(true)}
+              className="inline-flex items-center gap-2.5 text-[0.8125rem] text-soft transition-colors duration-300 hover:text-[rgb(var(--stage-ink))]"
+            >
+              <span
+                aria-hidden="true"
+                className="block h-[0.3125rem] w-[0.3125rem] flex-none rounded-full"
+                style={{ backgroundColor: "rgb(var(--stage-accent))" }}
+              />
+              출시 소식 가장 먼저 받아보기
+            </button>
+          </motion.div>
         </div>
       </div>
 
