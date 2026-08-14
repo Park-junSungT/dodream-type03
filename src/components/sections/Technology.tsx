@@ -59,7 +59,7 @@ export function Technology() {
 
         <Reveal amount={0.4}>
           <p className="mt-10 max-w-[34em] text-[0.75rem] leading-relaxed text-faint">
-            DoDream은 개발 중인 보조 기기입니다. 일상적인 이동과 주변 인지를
+            스마트 지팡이는 일상적인 이동과 주변 인지를
             돕도록 설계했으며, 사용자의 주의나 판단을 대신하지 않습니다.
           </p>
         </Reveal>

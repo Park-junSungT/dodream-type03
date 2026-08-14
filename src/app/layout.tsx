@@ -46,8 +46,8 @@ const pretendardKoExt = localFont({
   ],
 });
 
-const description =
-  "DoDream은 익숙한 지팡이에 스마트 기술을 더해 새로운 이동 경험을 만들어갑니다.";
+const description = "두드림"
+  // "DoDream은 익숙한 지팡이에 스마트 기술을 더해 새로운 이동 경험을 만들어갑니다.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dodream.example"),

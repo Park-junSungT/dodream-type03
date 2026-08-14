@@ -165,7 +165,7 @@ export const TECHNOLOGY_CARDS: readonly TechnologyCard[] = [
   },
   {
     id: "everyday",
-    title: "베터리",
+    title: "배터리",
     body: "한 번 충전으로 오래 사용할 수 있어 외출을 부담 없이 할 수 있도록 설계했습니다.",
   },
 ] as const;;
