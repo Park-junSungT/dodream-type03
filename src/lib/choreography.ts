@@ -364,11 +364,24 @@ export function copyPose(from: Pose, out: Pose): Pose {
   return out;
 }
 
-/** Distance multiplier applied to a focused hotspot camera per layout. */
+/**
+ * How far a focused hotspot camera sits from its target, in cane units — the
+ * cane runs from y = -1 to y = +1, so it is two units tall.
+ *
+ * At the 32° vertical field of view the canvas is set to, a distance of d
+ * shows 0.574 * d of height, so these land the product at roughly four fifths
+ * of frame: read as a whole cane, with the focused component clearly enlarged
+ * against the resting shot rather than filling the viewport.
+ *
+ * Each layout needs its own value because the information panel takes a
+ * different bite out of the frame — beside the product on desktop, docked
+ * under it on tablet and mobile, which leaves the product less height to live
+ * in the narrower the viewport gets.
+ */
 export const FOCUS_DISTANCE: Record<LayoutMode, number> = {
-  desktop: 1.3,
-  tablet: 1.45,
-  mobile: 1.65,
+  desktop: 3.5,
+  tablet: 4.4,
+  mobile: 5.4,
 };
 
 /**
