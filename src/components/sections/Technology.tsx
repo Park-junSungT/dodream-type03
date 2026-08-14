@@ -12,15 +12,16 @@ export function Technology() {
   return (
     <section
       id="technology"
-      aria-label="Technology that stays out of the way"
+      aria-label="기술은 자연스러워야 하니까"
       className="relative flex min-h-svh items-center py-32 sm:py-40"
     >
       <div className="shell w-full">
         <div className="max-w-[46rem]">
           <Reveal amount={0.3}>
-            <p className="eyebrow">04 — Technology</p>
-            <h2 className="display-lg mt-5 max-w-[16ch]">
-              Technology that stays out of the way.
+            <p className="eyebrow">04 — 기술</p>
+            <h2 className="display-lg mt-5">
+              기술은
+              <br />자연스러워야 하니까.
             </h2>
           </Reveal>
         </div>
@@ -57,10 +58,9 @@ export function Technology() {
         </ul>
 
         <Reveal amount={0.4}>
-          <p className="mt-10 max-w-[42ch] text-[0.75rem] leading-relaxed text-faint">
-            DoDream is an assistive product in development. It is designed to
-            support awareness and everyday independence, not to replace
-            attention, judgement or care.
+          <p className="mt-10 max-w-[34em] text-[0.75rem] leading-relaxed text-faint">
+            DoDream은 개발 중인 보조 기기입니다. 일상적인 이동과 주변 인지를
+            돕도록 설계했으며, 사용자의 주의나 판단을 대신하지 않습니다.
           </p>
         </Reveal>
       </div>

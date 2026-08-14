@@ -149,7 +149,12 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descriptionId}
-        className="relative w-full max-w-[30rem] overflow-hidden rounded-[1.5rem] p-7 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.45)] sm:p-9"
+        /*
+         * The form is taller than a landscape phone, so the panel is capped to
+         * the viewport and scrolls inside itself rather than running off both
+         * edges and putting the first field out of reach.
+         */
+        className="relative max-h-[calc(100svh-2rem)] w-full max-w-[30rem] overflow-y-auto overscroll-contain rounded-[1.5rem] p-7 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.45)] sm:p-9"
         style={{
           backgroundColor: "var(--stage-bg)",
           border: "1px solid rgb(var(--stage-line) / 0.1)",
@@ -164,7 +169,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
           onClick={close}
           className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full text-faint transition-colors hover:text-[rgb(var(--stage-ink))]"
         >
-          <span className="sr-only">Close</span>
+          <span className="sr-only">닫기</span>
           <svg
             width="14"
             height="14"
@@ -185,34 +190,33 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
           <div className="py-4">
             <p className="eyebrow">DoDream</p>
             <h2 id={titleId} className="display-md mt-4">
-              You&rsquo;re on the list.
+              관심 등록이 완료되었습니다.
             </h2>
             <p id={descriptionId} className="lede mt-4">
-              We&rsquo;ll keep you updated as DoDream takes its next step.
+              DoDream의 새로운 소식을 가장 먼저 전해드릴게요.
             </p>
             <button
               type="button"
               onClick={close}
               className="btn btn-ghost mt-8 w-full"
             >
-              Back to DoDream
+              닫기
             </button>
           </div>
         ) : (
           <form onSubmit={onSubmit} noValidate>
-            <p className="eyebrow">Waitlist</p>
+            <p className="eyebrow">관심 등록</p>
             <h2 id={titleId} className="display-md mt-4">
-              Join the DoDream Waitlist
+              DoDream의 소식을 받아보세요.
             </h2>
             <p id={descriptionId} className="lede mt-3 text-[0.9375rem]">
-              A few details, and we&rsquo;ll be in touch when there is something
-              real to share.
+              출시 및 새로운 소식을 가장 먼저 알려드립니다.
             </p>
 
             <div className="mt-7 flex flex-col gap-5">
               <Field
                 id="dd-name"
-                label="Name"
+                label="이름"
                 error={errors.name}
                 input={
                   <input
@@ -221,7 +225,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
                     type="text"
                     autoComplete="name"
                     className="field-input"
-                    placeholder="Your name"
+                    placeholder="이름을 입력해주세요"
                     value={name}
                     onChange={(event) => setName(event.target.value)}
                     aria-invalid={Boolean(errors.name)}
@@ -232,7 +236,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
 
               <Field
                 id="dd-email"
-                label="Email"
+                label="이메일"
                 error={errors.email}
                 input={
                   <input
@@ -242,7 +246,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
                     inputMode="email"
                     autoComplete="email"
                     className="field-input"
-                    placeholder="you@example.com"
+                    placeholder="이메일을 입력해주세요"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     aria-invalid={Boolean(errors.email)}
@@ -253,7 +257,7 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
 
               <fieldset>
                 <legend className="field-label">
-                  Who are you interested in DoDream for?
+                  누구를 위해 알아보고 계신가요?
                 </legend>
                 <div className="grid grid-cols-2 gap-2">
                   {WAITLIST_INTERESTS.map((option) => (
@@ -300,11 +304,11 @@ function WaitlistDialog({ reduced }: { reduced: boolean }) {
               disabled={status === "submitting"}
               style={{ opacity: status === "submitting" ? 0.65 : 1 }}
             >
-              {status === "submitting" ? "Joining…" : "Join the Waitlist"}
+              {status === "submitting" ? "등록 중…" : "관심 등록하기"}
             </button>
 
             <p className="mt-4 text-center text-[0.6875rem] leading-relaxed text-faint">
-              We&rsquo;ll only use your details to share DoDream updates.
+              입력하신 정보는 DoDream 소식 전달에만 사용합니다.
             </p>
           </form>
         )}

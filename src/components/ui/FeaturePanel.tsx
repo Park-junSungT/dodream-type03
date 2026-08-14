@@ -41,10 +41,10 @@ export function FeaturePanel() {
             transition={{ duration, ease: [0.16, 1, 0.3, 1] }}
             role="region"
             aria-live="polite"
-            aria-label={`${feature.title} details`}
+            aria-label={`${feature.title} 상세`}
           >
             <p className="eyebrow">
-              {String(indexOf(feature.id) + 1).padStart(2, "0")} — Component
+              {String(indexOf(feature.id) + 1).padStart(2, "0")} — 구성
             </p>
             <h3 className="mt-4 font-display text-[1.75rem] leading-[1.05] tracking-[-0.035em]">
               {feature.title}
@@ -60,7 +60,7 @@ export function FeaturePanel() {
               className="btn btn-ghost btn-sm mt-5 w-full"
               onClick={() => experience.setActiveFeature(null)}
             >
-              Back to the full product
+              전체 제품 보기
             </button>
           </motion.div>
         ) : (
@@ -71,7 +71,7 @@ export function FeaturePanel() {
             exit={{ opacity: 0, y: reduced ? 0 : -8 }}
             transition={{ duration, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="eyebrow">Components</p>
+            <p className="eyebrow">구성</p>
             {/*
              * Below `lg` the panel is docked under the product, so the list
              * becomes a single scrolling rail — it keeps the panel short and

@@ -49,10 +49,10 @@ export type ProductFeature = {
 export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   {
     id: "handle",
-    label: "Smart Handle",
-    title: "Smart Handle",
-    body: "Controls and sensing sit inside the grip, where the hand already rests. Nothing new to reach for.",
-    detail: "Machined aluminium core, soft-touch polymer grip",
+    label: "스마트 손잡이",
+    title: "스마트 손잡이",
+    body: "손이 자연스럽게 닿는 자리에 센서와 조작부를 담았습니다. 새로 익힐 것은 없습니다.",
+    detail: "알루미늄 코어 · 소프트터치 그립",
     anchor: [0.0, 0.8, 0.036],
     nodeName: "hotspot_handle",
     focus: {
@@ -63,10 +63,10 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   },
   {
     id: "haptics",
-    label: "Haptic Feedback",
-    title: "Haptic Feedback",
-    body: "A quiet pulse in the handle, designed to pass along information through touch rather than sound.",
-    detail: "Wide-band actuator in the upper collar",
+    label: "진동 피드백",
+    title: "진동 피드백",
+    body: "손잡이의 작은 진동으로 정보를 전합니다. 소리에만 기대지 않아도 되도록.",
+    detail: "상단 칼라에 내장된 광대역 액추에이터",
     anchor: [0.0, 0.62, 0.036],
     nodeName: "hotspot_haptics",
     focus: {
@@ -77,10 +77,10 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   },
   {
     id: "sensors",
-    label: "Sensors",
-    title: "Sensor Array",
-    body: "A forward-facing module intended to read the shape of the path ahead as you walk.",
-    detail: "Time-of-flight and inertial sensing",
+    label: "센서",
+    title: "센서",
+    body: "앞을 향한 모듈이 걸어가는 길의 형태를 읽도록 설계했습니다.",
+    detail: "ToF · 관성 센서",
     anchor: [0.0, 0.548, 0.041],
     nodeName: "hotspot_sensors",
     focus: {
@@ -91,10 +91,10 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   },
   {
     id: "detection",
-    label: "Intelligent Detection",
-    title: "Intelligent Detection",
-    body: "On-device processing aims to turn what the sensors pick up into simple, timely cues.",
-    detail: "Runs locally, behind the control key",
+    label: "주변 감지",
+    title: "주변 감지",
+    body: "센서가 읽은 정보를 기기 안에서 처리해, 간결한 신호로 알맞은 때에 전달합니다.",
+    detail: "조작 키 안쪽에서 기기가 직접 처리",
     anchor: [0.0, 0.444, 0.038],
     nodeName: "hotspot_detection",
     focus: {
@@ -105,10 +105,10 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   },
   {
     id: "body",
-    label: "Lightweight Body",
-    title: "Lightweight Body",
-    body: "A tapered aluminium shaft, balanced so the weight sits where the hand expects it to be.",
-    detail: "Anodised 7000-series aluminium",
+    label: "가벼운 디자인",
+    title: "가벼운 디자인",
+    body: "가늘어지는 알루미늄 바디. 손이 예상하는 자리에 무게가 오도록 균형을 잡았습니다.",
+    detail: "아노다이징 알루미늄",
     anchor: [0.0, -0.1, 0.034],
     nodeName: "hotspot_body",
     focus: {
@@ -119,10 +119,10 @@ export const PRODUCT_FEATURES: readonly ProductFeature[] = [
   },
   {
     id: "battery",
-    label: "Battery",
-    title: "All-day Battery",
-    body: "Built for days of ordinary use, then topped up on a magnetic dock at the collar.",
-    detail: "Sealed cell, service port in the base",
+    label: "배터리",
+    title: "배터리",
+    body: "하루가 아니라 며칠간의 일상적인 사용을 기준으로 설계했습니다. 충전은 하단 포트로.",
+    detail: "일체형 셀 · 하단 서비스 포트",
     anchor: [0.0, -0.895, 0.038],
     nodeName: "hotspot_battery",
     focus: {
@@ -150,22 +150,22 @@ export type TechnologyCard = {
 export const TECHNOLOGY_CARDS: readonly TechnologyCard[] = [
   {
     id: "detection",
-    title: "Intelligent Detection",
-    body: "Technology designed to help users become more aware of their surroundings.",
+    title: "주변 감지",
+    body: "주변 상황을 감지해 필요한 정보를 전달하도록 설계했습니다.",
   },
   {
     id: "haptics",
-    title: "Haptic Feedback",
-    body: "Subtle physical feedback designed to communicate information naturally.",
+    title: "진동 피드백",
+    body: "소리뿐 아니라 촉각을 통해 정보를 자연스럽게 전달합니다.",
   },
   {
     id: "connected",
-    title: "Connected Intelligence",
-    body: "A foundation for future connected mobility experiences.",
+    title: "스마트 기술",
+    body: "지팡이에 새로운 기술을 더해 더 넓은 이동 경험을 만들어갑니다.",
   },
   {
     id: "everyday",
-    title: "Everyday Design",
-    body: "Technology integrated into a familiar, lightweight form.",
+    title: "일상을 위한 디자인",
+    body: "매일 사용하는 지팡이인 만큼 익숙하고 편안한 형태를 생각했습니다.",
   },
-] as const;
+] as const;;

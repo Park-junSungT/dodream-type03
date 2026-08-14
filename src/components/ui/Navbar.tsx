@@ -75,7 +75,7 @@ export function Navbar() {
       />
 
       <nav
-        aria-label="Primary"
+        aria-label="주요 메뉴"
         className="shell relative flex h-16 items-center justify-between sm:h-[4.5rem]"
       >
         <a
@@ -111,7 +111,7 @@ export function Navbar() {
             onClick={openWaitlist}
             className="btn btn-primary btn-sm ml-3"
           >
-            {joined ? "You're on the list" : "신청하기"}
+            {joined ? "등록 완료" : "관심 등록"}
           </button>
         </div>
 
@@ -122,7 +122,7 @@ export function Navbar() {
           aria-controls="dd-mobile-menu"
           onClick={() => experience.setMenuOpen(!menuOpen)}
         >
-          <span className="sr-only">{menuOpen ? "Close menu" : "Open menu"}</span>
+          <span className="sr-only">{menuOpen ? "메뉴 닫기" : "메뉴 열기"}</span>
           <span aria-hidden="true" className="relative block h-3 w-5">
             <span
               className="absolute left-0 block h-px w-5 bg-[rgb(var(--stage-ink))] transition-transform duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -183,7 +183,7 @@ export function Navbar() {
                 onClick={openWaitlist}
                 className="btn btn-primary mt-4 w-full"
               >
-                {joined ? "You're on the list" : "Join the Waitlist"}
+                {joined ? "등록 완료" : "관심 등록하기"}
               </button>
             </div>
           </motion.div>

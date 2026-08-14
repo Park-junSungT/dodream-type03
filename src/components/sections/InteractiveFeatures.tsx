@@ -22,7 +22,7 @@ export function InteractiveFeatures() {
   return (
     <section
       id="explore"
-      aria-label="Designed around you"
+      aria-label="당신을 중심으로 설계했습니다"
       className="relative min-h-[230svh]"
     >
       <div className="sticky top-0 h-svh">
@@ -35,13 +35,13 @@ export function InteractiveFeatures() {
             transition={{ duration: reduced ? 0.15 : 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
             <Reveal amount={0.2}>
-              <p className="eyebrow">03 — Explore</p>
-              <h2 className="display-lg mt-5 max-w-[13ch]">
-                Designed around you.
+              <p className="eyebrow">03 — 살펴보기</p>
+              <h2 className="display-lg mt-5">
+                당신을 중심으로
+                <br />설계했습니다.
               </h2>
-              <p className="lede mt-6 max-w-[34ch]">
-                Turn the product to look around it, then open a marker to see
-                what sits inside.
+              <p className="lede mt-6">
+                제품을 돌려보고, 표시를 열어 안에 무엇이 있는지 확인해보세요.
               </p>
             </Reveal>
           </motion.div>
@@ -62,9 +62,9 @@ export function InteractiveFeatures() {
               transition={{ duration: reduced ? 0.15 : 0.6 }}
             >
               <span className="hidden sm:inline">
-                Drag to rotate · Click a marker
+                드래그해서 돌려보기 · 표시 선택
               </span>
-              <span className="sm:hidden">Swipe to rotate · Tap a marker</span>
+              <span className="sm:hidden">스와이프해서 돌려보기 · 표시 탭</span>
             </motion.p>
           ) : null}
         </AnimatePresence>

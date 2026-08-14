@@ -36,32 +36,35 @@ const korean = Noto_Sans_KR({
 });
 
 const description =
-  "스마트 지팡이";
+  "DoDream은 익숙한 지팡이에 스마트 기술을 더해 새로운 이동 경험을 만들어갑니다.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dodream.example"),
   title: {
-    default: "두드림",
-    template: "%s — DoDream",
+    default: "두드림 — 지팡이를 다시 생각하다",
+    template: "%s — 두드림",
   },
   description,
   applicationName: "DoDream",
   keywords: [
+    "두드림",
     "DoDream",
-    "smart cane",
-    "assistive technology",
-    "mobility",
-    "haptic feedback",
+    "스마트 지팡이",
+    "흰지팡이",
+    "보조 기기",
+    "시각장애",
+    "이동 보조",
   ],
   openGraph: {
-    title: "DoDream — A smarter way to move.",
+    title: "두드림 — 지팡이를 다시 생각하다",
     description,
     siteName: "DoDream",
+    locale: "ko_KR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DoDream — A smarter way to move.",
+    title: "두드림 — 지팡이를 다시 생각하다",
     description,
   },
 };
@@ -78,7 +81,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="ko"
       className={`${display.variable} ${sans.variable} ${korean.variable} h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
