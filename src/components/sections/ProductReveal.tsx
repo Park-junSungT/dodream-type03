@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { CopyScrim } from "@/components/ui/CopyScrim";
 import { Reveal } from "@/components/ui/Reveal";
+import { scrollToChapter } from "@/lib/navigate";
 import { useReducedMotion } from "@/lib/use-reduced-motion";
 
 const SPECS = [
@@ -79,6 +80,27 @@ export function ProductReveal() {
                 </div>
               ))}
             </dl>
+
+            {/*
+              The doorway into chapter 03, where the product is already
+              draggable and its components already open on tap. It sits at the
+              end of the spec block because that is where the reader runs out
+              of things to read — and it points at the section directly below,
+              so the invitation and the experience are one scroll apart.
+            */}
+            <button
+              type="button"
+              onClick={() => scrollToChapter("explore")}
+              className="group mt-7 inline-flex items-center gap-2 text-[0.8125rem] text-soft transition-colors duration-300 hover:text-[rgb(var(--stage-ink))]"
+            >
+              스마트 지팡이 체험하기
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-0.5"
+              >
+                →
+              </span>
+            </button>
           </motion.div>
         </div>
       </div>
