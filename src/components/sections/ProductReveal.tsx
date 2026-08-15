@@ -93,7 +93,7 @@ export function ProductReveal() {
               onClick={() => scrollToChapter("explore")}
               className="group mt-7 inline-flex items-center gap-2 text-[0.8125rem] text-soft transition-colors duration-300 hover:text-[rgb(var(--stage-ink))]"
             >
-              스마트 지팡이 체험하기
+              {/* 스마트 지팡이 체험하기 */}
               <span
                 aria-hidden="true"
                 className="transition-transform duration-300 group-hover:translate-x-0.5"
