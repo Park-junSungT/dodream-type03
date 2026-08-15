@@ -58,8 +58,20 @@ export function Navbar() {
       className="fixed inset-x-0 top-0 z-40"
       data-condensed={condensed ? "true" : undefined}
     >
+      {/*
+       * Height is pinned to the bar, not to `inset-0`.
+       *
+       * The header also contains the mobile sheet, so `inset-0` grew this
+       * layer from 64px to ~345px the moment the menu opened — a blur(12px)
+       * band over the top 40% of the page. Fully open the sheet's own opaque
+       * background hid it, but it showed through for the whole 420ms of the
+       * open and close transitions, which is the haze that appears after
+       * scrolling (before that `condensed` keeps this layer at opacity 0).
+       *
+       * Keep these two heights in step with the <nav> below.
+       */}
       <div
-        className="pointer-events-none absolute inset-0 border-b transition-[opacity,background-color] duration-500"
+        className="pointer-events-none absolute inset-x-0 top-0 h-16 border-b transition-[opacity,background-color] duration-500 sm:h-[4.5rem]"
         style={{
           opacity: condensed ? 1 : 0,
           backgroundColor: "rgb(var(--stage-ink) / 0.03)",
