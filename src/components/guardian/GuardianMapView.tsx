@@ -64,6 +64,22 @@ export function GuardianMapView({
   const originX = lngToWorldX(centre.lng, MAP_ZOOM) - w / 2;
   const originY = latToWorldY(centre.lat, MAP_ZOOM) - h / 2;
 
+  /*
+   * Tiles are laid on whole pixels and the leftover fraction is carried by a
+   * transform on the layer above them.
+   *
+   * Placing each tile at its true fractional offset is what tore the map: the
+   * browser rounds every image independently, so neighbours land a fraction
+   * apart and a hairline of the background shows through every seam — a cross
+   * straight down the middle of a 2x2 grid. Integers make the grid exact, and
+   * the sub-pixel remainder moves to a single composited transform where it
+   * shifts the whole sheet at once instead of pulling it apart.
+   */
+  const baseX = Math.floor(originX);
+  const baseY = Math.floor(originY);
+  const fracX = originX - baseX;
+  const fracY = originY - baseY;
+
   const toScreen = (point: LatLng) => ({
     x: lngToWorldX(point.lng, MAP_ZOOM) - originX,
     y: latToWorldY(point.lat, MAP_ZOOM) - originY,
@@ -73,9 +89,9 @@ export function GuardianMapView({
   if (w > 0 && h > 0) {
     const span = 2 ** MAP_ZOOM;
     const minX = Math.floor(originX / TILE_SIZE);
-    const maxX = Math.floor((originX + w) / TILE_SIZE);
+    const maxX = Math.floor((originX + w) / TILE_SIZE) + 1;
     const minY = Math.floor(originY / TILE_SIZE);
-    const maxY = Math.floor((originY + h) / TILE_SIZE);
+    const maxY = Math.floor((originY + h) / TILE_SIZE) + 1;
     for (let ty = minY; ty <= maxY; ty += 1) {
       if (ty < 0 || ty >= span) continue;
       for (let tx = minX; tx <= maxX; tx += 1) {
@@ -85,8 +101,8 @@ export function GuardianMapView({
           url: TILE_URL.replace("{z}", String(MAP_ZOOM))
             .replace("{x}", String(wrapped))
             .replace("{y}", String(ty)),
-          left: tx * TILE_SIZE - originX,
-          top: ty * TILE_SIZE - originY,
+          left: tx * TILE_SIZE - baseX,
+          top: ty * TILE_SIZE - baseY,
         });
       }
     }
@@ -111,7 +127,11 @@ export function GuardianMapView({
          */}
         <div
           className="absolute inset-0"
-          style={{ filter: "saturate(0.6) contrast(0.94) brightness(1.04)" }}
+          style={{
+            filter: "saturate(0.6) contrast(0.94) brightness(1.04)",
+            transform: `translate3d(${-fracX}px, ${-fracY}px, 0)`,
+            willChange: "transform",
+          }}
         >
           {tiles.map((tile) => (
             // eslint-disable-next-line @next/next/no-img-element
