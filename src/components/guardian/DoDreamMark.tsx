@@ -11,7 +11,7 @@
  * screen app icon all render through here.
  */
 
-const LOGO_SRC: string | null = null;
+const LOGO_SRC: string | null = "/logo/logo.png";
 
 export function DoDreamMark({
   size = 40,
