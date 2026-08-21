@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
 import { experience, useExperience } from "@/lib/experience-store";
 
@@ -31,13 +32,27 @@ export function Waitlist() {
 
           <Reveal amount={0.3} delay={0.1}>
             <div className="mt-11 flex flex-col items-center gap-4">
-              <button
-                type="button"
-                className="btn btn-primary h-[3.25rem] px-8"
-                onClick={() => experience.setWaitlistOpen(true)}
-              >
-                {joined ? "신청 완료" : "바로가기"}
-              </button>
+              {/*
+                The pair. The existing button is untouched — it only gains a
+                row around it so the guardian experience can sit beside it on a
+                wide screen and under it on a phone, where two buttons abreast
+                would each be too narrow for their label.
+
+                The second is a real link, not a handler, so the URL changes
+                and the back button returns here.
+              */}
+              <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <button
+                  type="button"
+                  className="btn btn-primary h-[3.25rem] px-8"
+                  onClick={() => experience.setWaitlistOpen(true)}
+                >
+                  {joined ? "신청 완료" : "바로가기"}
+                </button>
+                <Link href="/experience-app" className="btn btn-ghost h-[3.25rem] px-8">
+                  보호자 앱 체험하기
+                </Link>
+              </div>
               <p className="text-[0.75rem] text-faint">
                 {joined
                   ? ""
