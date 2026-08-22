@@ -65,13 +65,20 @@ export const GUARDIAN_COPY = {
   },
   fall: {
     eyebrow: "긴급 알림",
-    status: "낙상이 감지되었습니다",
+    status: "위험 상황이 감지되었습니다",
     body: "김영수님의 현재 위치를 확인해 주세요.",
   },
+  /* The message that arrives in the conversation. */
+  chat: {
+    sender: "두드림",
+    lead: "김영수님의 현재 위치에서",
+    body: "위험 상황이 감지되었습니다.",
+  },
+  /* The same event as a system notification. */
   push: {
     app: "카카오톡",
     sender: "두드림",
-    title: "낙상이 감지되었습니다.",
+    title: "위험 상황이 감지되었습니다.",
     body: "김영수님의 현재 위치를 확인해 주세요.",
     at: "지금",
   },

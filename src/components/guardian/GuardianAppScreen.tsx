@@ -36,7 +36,7 @@ export function GuardianAppScreen({
     <div className="flex min-h-0 flex-1 flex-col" style={{ backgroundColor: "var(--stage-bg)" }}>
       <StatusBar clock={clock} />
 
-      <div className="flex min-h-0 flex-1 flex-col px-5 pb-[max(1rem,env(safe-area-inset-bottom))] pt-2">
+      <div className="flex min-h-0 flex-1 flex-col px-4 pb-4 pt-2">
         <div className="flex flex-none items-center gap-2">
           <DoDreamMark size={22} rounded="0.45rem" />
           <p className="font-display text-[1rem] font-medium tracking-[-0.02em]">두드림</p>
@@ -73,8 +73,26 @@ export function GuardianAppScreen({
           </motion.div>
         </AnimatePresence>
 
+        {/*
+          Where he is, then the map showing it. The map used to come first,
+          which made the reader search the picture for a place name that was
+          sitting underneath it all along.
+        */}
+        <div className="mt-4 flex flex-none items-baseline justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-[0.625rem] text-faint">현재 위치</p>
+            <p className="mt-0.5 truncate text-[0.875rem] font-medium leading-tight">
+              {GUARDIAN_PLACE.name}
+              <span className="font-normal text-faint"> · {GUARDIAN_PLACE.district}</span>
+            </p>
+          </div>
+          <p className="flex-none text-[0.625rem] text-faint">
+            {fallen ? `감지 ${clock}` : GUARDIAN_COPY.safe.updated}
+          </p>
+        </div>
+
         <div
-          className="mt-4 min-h-[8rem] flex-1 overflow-hidden rounded-2xl border"
+          className="mt-2.5 min-h-[7rem] flex-1 overflow-hidden rounded-2xl border"
           style={{ borderColor: "rgb(var(--stage-line) / 0.12)" }}
         >
           <GuardianMapView
@@ -87,20 +105,7 @@ export function GuardianAppScreen({
           />
         </div>
 
-        <div className="mt-3.5 flex flex-none items-baseline justify-between gap-3">
-          <div className="min-w-0">
-            <p className="text-[0.6875rem] text-faint">현재 위치</p>
-            <p className="mt-1 truncate text-[0.875rem] leading-tight">
-              {GUARDIAN_PLACE.name}
-              <span className="text-faint"> · {GUARDIAN_PLACE.district}</span>
-            </p>
-          </div>
-          <p className="flex-none text-[0.6875rem] text-faint">
-            {fallen ? `감지 ${clock}` : GUARDIAN_COPY.safe.updated}
-          </p>
-        </div>
-
-        <dl className="mt-3.5 flex flex-none items-center justify-between gap-4 border-t pt-3.5 text-[0.8125rem] border-stage">
+        <dl className="mt-3 flex flex-none items-center justify-between gap-3 border-t pt-3 text-[0.75rem] border-stage">
           <div className="flex items-center gap-2">
             <dt className="text-soft">지팡이 상태</dt>
             <dd>{GUARDIAN.device.connection}</dd>

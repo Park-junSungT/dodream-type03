@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { DoDreamMark } from "./DoDreamMark";
 import { StatusBar } from "./PhoneShell";
-import { GUARDIAN, GUARDIAN_PLACE } from "@/lib/guardian-route";
+import { GUARDIAN_COPY, GUARDIAN_PLACE } from "@/lib/guardian-route";
 
 /**
  * The message the guardian receives.
@@ -40,7 +40,7 @@ export function KakaoChatScreen({
           style={{ borderColor: "rgb(20 30 41 / 0.7)" }}
         />
         <p className="min-w-0 flex-1 truncate text-[0.9375rem] font-medium" style={{ color: "#141e29" }}>
-          두드림
+          {GUARDIAN_COPY.chat.sender}
         </p>
         <span aria-hidden="true" className="flex flex-none flex-col gap-[3px]">
           {[0, 1, 2].map((i) => (
@@ -68,32 +68,36 @@ export function KakaoChatScreen({
               <DoDreamMark size={34} rounded="0.85rem" />
               <div className="min-w-0 flex-1">
                 <p className="text-[0.6875rem]" style={{ color: "rgb(20 30 41 / 0.7)" }}>
-                  두드림
+                  {GUARDIAN_COPY.chat.sender}
                 </p>
                 <div className="mt-1 flex items-end gap-1.5">
+                  {/*
+                    One message, read as one sentence: where he is on the first
+                    line, what happened on the second. It used to open with the
+                    incident and repeat the location in a two-row table below —
+                    the same facts, arriving as a form rather than as news.
+                  */}
                   <div
                     className="min-w-0 max-w-[13.5rem] rounded-[0.9rem] rounded-tl-[0.2rem] px-3 py-2.5"
                     style={{ backgroundColor: "#ffffff", color: "#141e29" }}
                   >
+                    <p className="text-[0.8125rem] leading-relaxed">
+                      {GUARDIAN_COPY.chat.lead}
+                    </p>
                     <p className="text-[0.8125rem] font-medium leading-relaxed">
-                      낙상이 감지되었습니다.
+                      {GUARDIAN_COPY.chat.body}
                     </p>
-                    <p className="mt-1 text-[0.8125rem] leading-relaxed">
-                      {GUARDIAN.walker}님의 현재 위치를 확인해주세요.
-                    </p>
-                    <dl
-                      className="mt-2.5 flex flex-col gap-1 border-t pt-2.5 text-[0.75rem]"
-                      style={{ borderColor: "rgb(20 30 41 / 0.1)" }}
+                    {/*
+                      Place only. The time is already sitting beside the
+                      bubble where a messaging app puts it, and printing it
+                      twice made one short message look like a form.
+                    */}
+                    <p
+                      className="mt-2 border-t pt-2 text-[0.75rem]"
+                      style={{ borderColor: "rgb(20 30 41 / 0.1)", color: "rgb(20 30 41 / 0.55)" }}
                     >
-                      <div className="flex gap-2">
-                        <dt style={{ color: "rgb(20 30 41 / 0.5)" }}>발생 위치</dt>
-                        <dd>{GUARDIAN_PLACE.name}</dd>
-                      </div>
-                      <div className="flex gap-2">
-                        <dt style={{ color: "rgb(20 30 41 / 0.5)" }}>발생 시간</dt>
-                        <dd className="tabular-nums">{clock}</dd>
-                      </div>
-                    </dl>
+                      {GUARDIAN_PLACE.name} · {GUARDIAN_PLACE.district}
+                    </p>
                   </div>
                   <span className="flex-none pb-0.5 text-[0.625rem] tabular-nums" style={{ color: "rgb(20 30 41 / 0.55)" }}>
                     {clock}
@@ -110,7 +114,7 @@ export function KakaoChatScreen({
               exit={{ opacity: 0 }}
               style={{ color: "rgb(20 30 41 / 0.5)" }}
             >
-              안전 상황이 감지되면 이곳으로 알림이 전달됩니다.
+              위험 상황이 감지되면 이곳으로 알림이 전달됩니다.
             </motion.p>
           )}
         </AnimatePresence>
