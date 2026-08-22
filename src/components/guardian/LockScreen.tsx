@@ -3,7 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { DoDreamMark } from "./DoDreamMark";
 import { StatusBar } from "./PhoneShell";
-import { GUARDIAN } from "@/lib/guardian-route";
+import { GUARDIAN_COPY } from "@/lib/guardian-route";
 
 /**
  * The alert as it lands on a locked phone.
@@ -71,28 +71,26 @@ export function LockScreen({
                     className="min-w-0 flex-1 truncate text-[0.6875rem]"
                     style={{ color: "rgb(255 255 255 / 0.72)" }}
                   >
-                    두드림
+                    {GUARDIAN_COPY.push.sender}
                   </span>
                   <span
-                    className="flex-none text-[0.6875rem] tabular-nums"
+                    className="flex-none text-[0.6875rem]"
                     style={{ color: "rgb(255 255 255 / 0.6)" }}
                   >
-                    지금
+                    {GUARDIAN_COPY.push.at}
                   </span>
                 </div>
                 <p
                   className="mt-2 text-[0.875rem] font-medium leading-snug"
                   style={{ color: "rgb(255 255 255 / 0.97)" }}
                 >
-                  낙상이 감지되었습니다.
+                  {GUARDIAN_COPY.push.title}
                 </p>
                 <p
                   className="mt-1 text-[0.8125rem] leading-relaxed"
                   style={{ color: "rgb(255 255 255 / 0.78)" }}
                 >
-                  {GUARDIAN.walker}님의 현재 위치를
-                  <br />
-                  확인해주세요.
+                  {GUARDIAN_COPY.push.body}
                 </p>
               </motion.div>
             ) : (
