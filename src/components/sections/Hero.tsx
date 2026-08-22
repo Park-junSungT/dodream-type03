@@ -87,11 +87,11 @@ export function Hero() {
               onClick={() => experience.setWaitlistOpen(true)}
               className="inline-flex items-center gap-2.5 text-[0.8125rem] text-soft transition-colors duration-300 hover:text-[rgb(var(--stage-ink))]"
             >
-              <span
+              {/* <span
                 aria-hidden="true"
                 className="block h-[0.3125rem] w-[0.3125rem] flex-none rounded-full"
                 style={{ backgroundColor: "rgb(var(--stage-accent))" }}
-              />
+              /> */}
               {/* 현재까지 18,791명이 신청 하였습니다. */}
             </button>
           </motion.div>
