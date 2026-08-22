@@ -184,8 +184,8 @@ export function GuardianExperience() {
             the comma is where the sentence actually turns.
           */}
           <h1 className="display-md">
-            지팡이가 먼저 감지하고,
-            <br /> 필요한 순간 보호자에게 알려드립니다.
+            낙상, 위험 상황을 감지하고,
+            <br /> 보호자에게 알립니다.
           </h1>
           <p className="lede mt-5">
             보호자 앱과 카카오톡을 통해 현재 상황을 전달합니다.
@@ -204,7 +204,7 @@ export function GuardianExperience() {
             onClick={trigger}
             className="btn btn-ghost btn-sm min-w-[11.5rem]"
           >
-            {step > 0 ? "다시 체험하기" : "낙상 상황 체험하기"}
+            {step > 0 ? "다시 체험하기" : "낙상 상황 알림 체험하기"}
           </button>
           <p className="text-center text-[0.6875rem] leading-relaxed text-faint">
             실제 제품과 연결되지 않은 시뮬레이션 체험입니다.

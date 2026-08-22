@@ -38,7 +38,7 @@ export function LockScreen({
             className="text-[0.75rem]"
             style={{ color: "rgb(255 255 255 / 0.62)" }}
           >
-            8월 21일 금요일
+            8월 22일 금요일
           </p>
           <p
             className="mt-1 font-display text-[3.4rem] font-medium leading-none tracking-[-0.03em] tabular-nums"
