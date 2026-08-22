@@ -2,6 +2,7 @@
 
 import { TECHNOLOGY_CARDS } from "@/lib/features";
 import { Reveal } from "@/components/ui/Reveal";
+import { MvpFilm } from "@/components/ui/MvpFilm";
 
 /**
  * Chapter 04. The product steps back and to one side; the writing leads.
@@ -26,7 +27,25 @@ export function Technology() {
           </Reveal>
         </div>
 
-        <ul className="mt-14 grid max-w-[46rem] grid-cols-1 gap-3 sm:mt-20 sm:grid-cols-2 sm:gap-4">
+
+        <div className="mt-14 flex flex-col sm:mt-20 lg:flex-row lg:items-start lg:gap-12">
+        {/*
+          The claims here are about intent. This is the device itself, running —
+          it belongs beside them, read as evidence rather than decoration.
+
+          One instance, moved by `order` rather than rendered twice at two
+          breakpoints: a second copy would sit inert behind `display:none`,
+          holding an observer and a second element for nothing. Stacked it leads
+          the cards; from `lg` it sits out to their right.
+        */}
+          <Reveal
+            amount={0.25}
+            className="order-first mb-10 flex-none lg:order-last lg:mb-0"
+          >
+            <MvpFilm />
+          </Reveal>
+
+        <ul className="grid max-w-[46rem] flex-1 grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4">
           {TECHNOLOGY_CARDS.map((card, index) => (
             <Reveal
               key={card.id}
@@ -56,6 +75,8 @@ export function Technology() {
             </Reveal>
           ))}
         </ul>
+
+        </div>
 
         <Reveal amount={0.4}>
           <p className="mt-10 max-w-[34em] text-[0.75rem] leading-relaxed text-faint">
